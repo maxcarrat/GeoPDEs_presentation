@@ -1,0 +1,63 @@
+% !TeX root = ../../../main.tex
+
+\tikzexternaldisable%
+\begin{tikzpicture}
+\node[inner sep=0pt] (elementMultiLevelSplines) at (6,7.5)
+{%
+	%\resizebox{3.5cm}{3.5cm}{%
+	\input{pictures/basis/elementBasis/elementMultiLevelSplines.tex}%
+	%}%
+};%
+\node[inner sep=0pt] (elementLevelSplines) at (0,0)
+{%
+	%\resizebox{3cm}{3cm}{%
+	\input{pictures/basis/elementBasis/elementLevelSplines.tex}%
+	%	}%
+};%
+\node[inner sep=0pt] (bernsteinPolynomials) at (12,0)
+{%
+	%\resizebox{3cm}{3cm}{%
+	\input{pictures/basis/elementBasis/bernsteinPolynomials.tex}%
+	%	}%
+};%
+%
+\draw[->,thick]  ($(elementLevelSplines.north)+(0,0.1)$) -- (elementMultiLevelSplines.south west) %
+node[midway, xshift=-0.3cm, fill=white, inner sep=-1pt] {%
+ $ %
+		\left[\begin{mysmallmatrix} %
+		\restr{b_{2}^0}{\epsilon_3} \\ %
+		\restr{b_{3}^0}{\epsilon_3} \\ %
+		\restr{\color{blue}{ b_{6}^1 }}{\epsilon_3} \\ %
+		\restr{\color{orange}{ b_{12}^2 }}{\epsilon_3}%
+		\end{mysmallmatrix}\right]   = %
+		\underbrace{ \normalsize\frac{1}{16}\left[\begin{myverysmallmatrix}	%
+			3 &    1 &    0\\%
+			12   &  12   &  10\\%
+			4   & 12 &  12\\%
+			0    & 0 &   16%
+			\end{myverysmallmatrix}\right] }_{\setstretch{0.6}\begin{array}{@{}c@{}}\tensor{ML}_{\epsilon_3}\\\text{\setstretch{1.0}  multi-level operator} \end{array}}
+		%_{\normalsize \substack{\normalsize \tensor{ML}_{\epsilon_3}\\\text{ \normalsize multi-level operator}}}%
+		\cdot \left[\begin{mysmallmatrix} \color{gray}{b_{10}^2}\\ \color{gray}{b_{11}^2}\\\color{orange}{b_{12}^2} \end{mysmallmatrix}\right] $
+};%
+\draw[<-,thick]   ($(elementLevelSplines.east)+(0.2,-0.8)$) -- ($(bernsteinPolynomials.west)+(-0.2,-0.8)$)%
+node[midway,above] {%
+	$ %
+					\left[\begin{mysmallmatrix} \color{gray}{b_{10}^2}\\ \color{gray}{b_{11}^2}\\\color{orange}{b_{12}^2} \end{mysmallmatrix}\right]   = %
+						\underbrace{\large \tensor{C}_{\epsilon_3}}_{\text{\normalsize \Bezier\ extraction}}%
+						\cdot \left[\begin{mysmallmatrix}B_0\\B_1\\B_2 \end{mysmallmatrix}\right]  $
+};%
+\draw[->,thick]  ($(bernsteinPolynomials.north)+(0,0.1)$)  -- (elementMultiLevelSplines.south east) %
+node[midway, xshift=0.2cm ,fill=white, inner sep=-1pt] {%
+	%
+	$ \left[\begin{mysmallmatrix} %
+ 	\restr{b_{2}^0}{\epsilon_3} \\ %
+	\restr{b_{3}^0}{\epsilon_3} \\ %
+	\restr{\color{blue}{ b_{6}^1 }}{\epsilon_3} \\ %
+	\restr{\color{orange}{ b_{12}^2 }}{\epsilon_3}%
+	\end{mysmallmatrix}\right] = \underbrace{\normalsize \tensor{ML}_{\epsilon_3} \cdot \tensor{C}_{\epsilon_3}}_{\text{\normalsize multi-level \Bezier\ extraction}} \cdot \left[\begin{mysmallmatrix}B_0\\B_1\\B_2 \end{mysmallmatrix}\right]$
+};%
+%
+%
+\end{tikzpicture}%
+
+\tikzexternalenable

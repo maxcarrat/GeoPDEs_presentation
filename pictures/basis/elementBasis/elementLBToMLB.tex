@@ -1,0 +1,79 @@
+% !TeX root = ../../../main.tex
+\tikzexternaldisable%
+\begin{tikzpicture}
+\small
+\node[inner sep=0pt] (elementMultiLevelSplines) at (4.25,5.25)
+{%
+	%\resizebox{3.5cm}{3.5cm}{%
+	\input{pictures/basis/elementBasis/elementMultiLevelSplines.tex}%
+	%}%
+};%
+\node[inner sep=0pt, visible on=<2->] (elementLevelSplines) at (0,0)
+{%
+	%\resizebox{3cm}{3cm}{%
+	\input{pictures/basis/elementBasis/elementLevelSplines.tex}%
+	%	}%
+};%
+\node[inner sep=0pt, visible on=<5->] (bernsteinPolynomials) at (8.5,0)
+{%
+	%\resizebox{3cm}{3cm}{%
+	\input{pictures/basis/elementBasis/bernsteinPolynomials.tex}%
+	%	}%
+};%
+%
+\draw[->,thick, visible on=<3>]  ($(elementLevelSplines.north)+(0,0.1)$) -- (elementMultiLevelSplines.south west) %
+node[midway, xshift=-0.3cm, fill=white, inner sep=-1pt ,visible on=<3->] {%
+ $ %
+	\left[\begin{myverysmallmatrix} %
+\restr{b_{2}^0}{\epsilon_3} \\ %
+\restr{b_{3}^0}{\epsilon_3} \\ %
+\restr{\textcolor{blue}{b_{6}^1}}{\epsilon_3} \\ %
+\restr{\textcolor{orange}{ b_{12}^2 }}{\epsilon_3}%
+\end{myverysmallmatrix}\right]   = %
+	\frac{1}{16}\left[\begin{myverysmallmatrix}	%
+			3 &    1 &    0\\%
+			12   &  12   &  10\\%
+			\color{blue}{4}   & \color{blue}{12} &  \color{blue}{12}\\%
+			\color{orange}{0}   & \color{orange}{0} &   \color{orange}{16}%
+			\end{myverysmallmatrix}\right]
+%\tensor{ML}_{\epsilon_3}
+%_{\normalsize \substack{\normalsize \tensor{ML}_{\epsilon_3}\\\text{ \normalsize multi-level operator}}}%
+\cdot \left[\begin{myverysmallmatrix} \restr{\textcolor{gray}{b_{10}^2}}{\epsilon_3}\\ \restr{\textcolor{gray}{b_{11}^2}}{\epsilon_3}\\ \restr{\textcolor{orange}{b_{12}^2}}{\epsilon_3} \end{myverysmallmatrix}\right] $
+};%
+\draw[->,thick, visible on=<4->]  ($(elementLevelSplines.north)+(0,0.1)$) -- (elementMultiLevelSplines.south west) %
+node[midway, xshift=-0.3cm, fill=white, inner sep=-1pt ,visible on=<3->] {%
+	$ %
+	\left[\begin{myverysmallmatrix} %
+	\restr{b_{2}^0}{\epsilon_3} \\ %
+	\restr{b_{3}^0}{\epsilon_3} \\ %
+	\restr{\textcolor{blue}{b_{6}^1}}{\epsilon_3} \\ %
+	\restr{\textcolor{orange}{ b_{12}^2 }}{\epsilon_3}%
+	\end{myverysmallmatrix}\right]   = %
+	\underbrace{\tensor{ML}_{\epsilon_3}}%
+	%_{\text{ \normalsize multi-level operator}}%
+	_{\substack{\text{\normalsize multi-level}\\\text{ \normalsize operator}}}
+	\cdot \left[\begin{myverysmallmatrix} \restr{\textcolor{gray}{b_{10}^2}}{\epsilon_3}\\ \restr{\textcolor{gray}{b_{11}^2}}{\epsilon_3}\\ \restr{\textcolor{orange}{b_{12}^2}}{\epsilon_3} \end{myverysmallmatrix}\right] $
+};%
+\draw[<-,thick, visible on=<6->]   ($(elementLevelSplines.east)+(0.2,-0.8)$) -- ($(bernsteinPolynomials.west)+(-0.2,-0.8)$)%
+node[midway,above] {%
+	$ %
+					\left[\begin{myverysmallmatrix} \restr{\textcolor{gray}{b_{10}^2}}{\epsilon_3}\\ \restr{\textcolor{gray}{b_{11}^2}}{\epsilon_3}\\ \restr{\textcolor{orange}{b_{12}^2}}{\epsilon_3} \end{myverysmallmatrix}\right]   = %
+						\underbrace{\large \tensor{C}_{\epsilon_3}}_{\text{\normalsize \Bezier\ extraction}}%
+						\cdot \left[\begin{myverysmallmatrix}B_0\\B_1\\B_2 \end{myverysmallmatrix}\right]  $
+};%
+\draw[->,thick, visible on=<7->]  ($(bernsteinPolynomials.north)+(0,0.1)$)  -- (elementMultiLevelSplines.south east) %
+node[midway, xshift=0.2cm ,fill=white, inner sep=-1pt] {%
+	%
+	$ \left[\begin{myverysmallmatrix} %
+ 	\restr{b_{2}^0}{\epsilon_3} \\ %
+	\restr{b_{3}^0}{\epsilon_3} \\ %
+	\restr{\textcolor{blue}{ b_{6}^1 }}{\epsilon_3} \\ %
+	\restr{\textcolor{orange}{ b_{12}^2 }}{\epsilon_3}%
+	\end{myverysmallmatrix}\right] = \underbrace{\normalsize \tensor{ML}_{\epsilon_3} \cdot \tensor{C}_{\epsilon_3}}%_{\text{\normalsize multi-level \Bezier\ extraction}} \cdot
+	_{\substack{\text{\normalsize multi-level}\\\text{ \normalsize \Bezier\ extraction}}}%
+	 \left[\begin{myverysmallmatrix}B_0\\B_1\\B_2 \end{myverysmallmatrix}\right]$
+};%
+%
+%
+\end{tikzpicture}%
+\tikzexternalenable

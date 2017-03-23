@@ -1,0 +1,54 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=6cm,
+height=5cm,
+scale only axis,
+xminorticks=true,
+xmin=0,
+xmax=3500,
+ymin=0,
+ymax=3.5,
+yminorticks=true,
+axis background/.style={fill=white},
+ytick={0,1,2,3,3.5},
+ylabel=$ \frac{\text{Nr. Ops.}}{\text{Nr. Ops. Serial Oslo}} $,
+xlabel=Number of Added Knots,
+legend style={font=\tiny},
+legend pos=north west
+]%
+\addplot [color=blue, mark=o, mark options={solid, blue}]
+  table[row sep=crcr]{%
+3	0.666666666666667\\
+9	1.2\\
+21	1.55555555555556\\
+45	1.76470588235294\\
+93	1.87878787878788\\
+189	1.93846153846154\\
+381	1.96899224806202\\
+765	1.98443579766537\\
+1533	1.99220272904483\\
+3069	1.99609756097561\\
+};
+\addplot [color=red, mark=o, mark options={solid, red}]
+  table[row sep=crcr]{%
+3	2.33333333333333\\
+9	2.8\\
+21	3.11111111111111\\
+45	3.29411764705882\\
+93	3.39393939393939\\
+189	3.44615384615385\\
+381	3.47286821705426\\
+765	3.4863813229572\\
+1533	3.49317738791423\\
+3069	3.49658536585366\\
+};
+\legend{Boehm, Bs2bs}
+\end{axis}
+\end{tikzpicture}%

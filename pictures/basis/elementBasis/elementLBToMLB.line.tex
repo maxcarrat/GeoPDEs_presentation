@@ -1,0 +1,89 @@
+% !TeX root = ../../../main.tex
+
+%\tikzexternaldisable%
+
+\newcommand{\tikzmark}[2]{\tikz[overlay, remember picture,
+	baseline=(#1.base), font=\tiny] \node (#1) {#2};}%
+
+\begin{minipage}[t][3cm][b]{.2\textwidth}%
+	\topskip0pt%
+	\rightskip0pt%
+	\leftskip0pt%
+		\hspace{-0.2cm}%
+		\resizebox{\linewidth}{3cm}{%
+		\trimbox{0.2cm 0.22cm 0.3cm 0.12cm}{ %
+		\input{pictures/basis/elementBasis/elementMultiLevelSplines.tex}%
+}%
+}%
+\end{minipage}%
+\hspace{-0.2cm}
+\begin{minipage}[t][3cm][b]{.2\textwidth}%
+\topskip0pt%
+\rightskip0pt%
+\leftskip0pt%
+\vspace*{\fill}%
+\scriptsize%
+	\resizebox{\textwidth}{1.5cm}{%
+		\tikz[] {%					
+		\draw[<-,thick,black] (0,0) -- (2,0) node [pos=0.5,above] { $ %
+			 \left[\begin{smallmatrix} %
+			 \restr{b_{3}^0}{\epsilon_4} \\ %
+			 \restr{\color{blue}{ b_{6}^1 }}{\epsilon_4} \\ %
+			 \restr{\color{blue}{b_{7}^1 }}{\epsilon_4}\\  %
+			 \restr{\color{orange}{ b_{14}^2 }}{\epsilon_4}%
+		\end{smallmatrix}\right]   = %
+		 \underbrace{ \frac{1}{16}\left[\begin{smallmatrix}	%
+		 10 &    6 &    3\\%
+			12   &  4   &  0\\%
+			4   & 12 &  12\\%
+			0    & 0 &   16%
+			\end{smallmatrix}\right] }_{\tensor{ML}_{\epsilon_4}}%
+			 \cdot \left[\begin{smallmatrix} \color{gray}{b_{12}^2}\\ \color{gray}{b_{13}^2}\\\color{orange}{b_{14}^2} \end{smallmatrix}\right] $ };
+		 \draw[transparent] (-1.1,-0.07) rectangle (3.11,1.7);
+	}%
+}%
+\vspace*{\fill}%
+\end{minipage}%
+\begin{minipage}[t][3cm][b]{.17\textwidth}
+			\topskip0pt%
+		\rightskip0pt%
+		\leftskip0pt%
+		\hspace{-0.2cm}%
+		\resizebox{\linewidth}{3cm}{%
+			\trimbox{0.2cm 0.22cm 0.3cm 0.12cm}{ %
+				\input{pictures/basis/elementBasis/elementLevelSplines.tex}%
+			}%
+		}%
+\end{minipage}%
+\hspace{-0.1cm}
+\begin{minipage}[t][3cm][b]{.2\textwidth}%
+	\topskip0pt%
+	\rightskip0pt%
+	\leftskip0pt%
+	\vspace*{\fill}%
+	\scriptsize%
+		\resizebox{\textwidth}{1.5cm}{%
+			\tikz[remember picture] {%					
+				\draw[<-,thick,black] (0,0) -- (2,0) node [pos=0.5,above] { $ %
+				\left[\begin{smallmatrix} \color{gray}{b_{12}^2}\\ \color{gray}{b_{13}^2}\\\color{orange}{b_{14}^2} \end{smallmatrix}\right]   = %
+					\underbrace{ \tensor{C} }_{\text{\Bezier\ extraction }}%
+					\cdot \left[\begin{smallmatrix}B_0\\B_1\\B_2 \end{smallmatrix}\right]  $ };
+				\draw[transparent] (-1.1,-0.07) rectangle (3.11,1.7);
+			}%
+		}%
+	\vspace*{\fill}%
+\end{minipage}%
+\hspace{-0.2cm}
+\begin{minipage}[t][3cm][b]{.17\textwidth}
+		\topskip0pt%
+		\rightskip0pt%
+		\leftskip0pt%
+		\hspace{-0.2cm}%
+		\resizebox{\linewidth}{3.1cm}{%
+			\trimbox{0.2cm 0.22cm 0.3cm 0.12cm}{ %
+				\input{pictures/basis/elementBasis/bernsteinPolynomials.tex}%
+			}%
+		}%
+\end{minipage}%
+
+%\tikzexternalenable

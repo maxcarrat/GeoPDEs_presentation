@@ -1,0 +1,47 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=4.602in,
+height=3.583in,
+at={(0.772in,0.484in)},
+scale only axis,
+xmode=log,
+xmin=10,
+xmax=100000,
+xminorticks=true,
+ymode=log,
+ymin=0.001,
+ymax=0.1,
+yminorticks=true,
+axis background/.style={fill=white}
+]
+\addplot [color=red,solid,mark=square,mark options={solid},forget plot]
+  table[row sep=crcr]{%
+91	0.0766396696324313\\
+160	0.0492573753694321\\
+294	0.0312745259781169\\
+660	0.0198067026806826\\
+1650	0.0125150519229291\\
+4550	0.00789625154842711\\
+13464	0.00497832932312483\\
+45257	0.00313741507918149\\
+};
+\addplot [color=black,dashed,forget plot]
+  table[row sep=crcr]{%
+91	0.0297737956632537\\
+160	0.0240272650477109\\
+294	0.0190676840468274\\
+660	0.0140230743631824\\
+1650	0.00989979117577662\\
+4550	0.00673326336563706\\
+13464	0.00445844869525894\\
+45257	0.00281260887622936\\
+};
+\end{axis}
+\end{tikzpicture}%

@@ -1,0 +1,137 @@
+\pgfplotsset{compat=1.8}
+
+
+\newcommand{\findmax}[3]{
+%     \pgfplotsforeachungrouped \table in {#1} {%
+%         \pgfplotstablevertcat{\concatenated}{\table}%
+%     }%
+    \pgfplotstablesort[sort key={#2},sort cmp={float >}]{\sorted}{#1}%
+    \pgfplotstablegetelem{0}{#2}\of{\sorted}%
+    \let #3=\pgfplotsretval%
+}
+
+\pgfplotscreateplotcyclelist{myCycleListBlackAndWhite}
+{%
+  {black, mark=o},
+  {black, mark=square},
+  {black, mark=triangle},
+  {black, mark=diamond}, 
+  {black, mark=pentagon}, 
+  {black, mark=*},
+  {black, mark=square*},
+  {black, mark=triangle*},
+  {black, mark=diamond*}, 
+  {black, mark=pentagon*}, 
+}
+
+\definecolor{darkgreen}{rgb}{0,0.4,0} 
+\definecolor{darkbrown}{rgb}{0.5, 0.396, 0.09}
+
+\definecolor{c1}{rgb}{0.0, 0.4196078431372549, 0.6431372549019608}
+\definecolor{c2}{rgb}{1.0, 0.5019607843137255, 0.054901960784313725}
+\definecolor{c3}{rgb}{0.6705882352941176, 0.6705882352941176,
+0.6705882352941176} \definecolor{c}{rgb}{0.34901960784313724, 0.34901960784313724, 0.34901960784313724}
+\definecolor{c4}{rgb}{0.37254901960784315, 0.6196078431372549,
+0.8196078431372549} \definecolor{c}{rgb}{0.7843137254901961, 0.3215686274509804, 0.0}
+\definecolor{c5}{rgb}{0.5372549019607843, 0.5372549019607843,
+0.5372549019607843} \definecolor{c}{rgb}{0.6352941176470588, 0.7843137254901961, 0.9254901960784314}
+\definecolor{c6}{rgb}{1.0, 0.7372549019607844, 0.4745098039215686}
+\definecolor{c7}{rgb}{0.8117647058823529, 0.8117647058823529,
+0.8117647058823529}
+
+\pgfplotscreateplotcyclelist{myCycleListColor}
+{%
+  {blue, mark=o},
+  {red, mark=square},
+  {darkbrown, mark=triangle},
+  {darkgreen, mark=diamond},
+  {black, mark=pentagon},
+  {blue, mark=*},
+  {red, mark=square*},
+  {darkbrown, mark=triangle*},
+  {darkgreen, mark=diamond*},
+  {black, mark=pentagon*},
+}
+
+% \pgfplotscreateplotcyclelist{myCycleListColor}
+% {%
+%   {c1, mark=o},
+%   {c2, mark=square},
+%   {c3, mark=triangle},
+%   {c4, mark=diamond}, 
+%   {c5, mark=pentagon}, 
+%   {c1, mark=*},
+%   {c2, mark=square*},
+%   {c3, mark=triangle*},
+%   {c4, mark=diamond*}, 
+%   {c5, mark=pentagon*}, 
+% }
+
+\pgfplotsset{every axis/.append style= 
+              {
+                font=\scriptsize,
+                mark size=2,
+              %  line width = 0.1,
+                %cycle list name=black white,
+                legend style={font=\tiny, mark size=3, draw=none, fill=none},
+                legend cell align=left,
+                cycle list name=myCycleListColor,
+                scaled y ticks = false,
+				scaled x ticks = false,
+				trim axis left,
+				trim axis right,
+				sharp plot,
+				tick label style ={font=\tiny},
+				label style ={font=\scriptsize},
+				very thin,
+				ymajorgrids=true,
+				grid style=dotted,
+				legend pos= north east,
+%				width=\textwidth,
+				height=\figHeight, width=\figWidth,
+				%scale only axis,
+              }
+            }
+
+\pgfplotsset{every tick label/.append style={font=\tiny}}
+\pgfplotsset{every label/.append style={font=\scriptsize}}
+\pgfplotsset{every axis legend/.append style={font=\tiny}}
+
+            
+\pgfplotstableset
+{
+  every odd row/.style={before row={\rowcolor[gray]{0.9}}},
+  every head row/.style=
+  {
+    before row=
+    {%
+      \toprule
+    },
+    after row=\midrule
+  },
+  every last row/.style=
+  {
+    after row=\bottomrule
+  }
+}
+
+% Boolean for drawing a bounding box around every figure or not.
+\newif\ifdrawboundingbox
+
+ 
+%\usetikzlibrary{external} % Is activated with the command
+%\tikzset{external/system call={pdflatex \tikzexternalcheckshellescape
+%-halt-on-error -interaction=batchmode -jobname "\image" "\texsource"}} 
+% '\tikzexternalize'.
+
+%\tikzexternalize
+% externalization.
+
+\pgfkeys
+{ 
+  /pgf/number format/.cd,
+  fixed,
+  %fixed zerofill,
+  set thousands separator={\,},
+  1000 sep in fractionals,
+}

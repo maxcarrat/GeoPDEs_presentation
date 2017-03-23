@@ -1,0 +1,85 @@
+% !TeX root = ../../../main.tex
+%
+%
+\tikzexternaldisable%
+\tikzset{%
+	highlightStd/.style={rectangle,draw,thick,inner sep=-1.6pt, rounded corners, opacity=1,color=black%!50, fill=black!15,fill opacity=0.2
+	}
+}%
+\tikzset{%
+	highlight0/.style={rectangle,fill=black!15,draw,
+		fill opacity=1,draw opacity=0.2,inner sep=-2.2pt}
+}%
+\tikzset{%
+	highlight1/.style={rectangle,fill=blue!15,draw,
+		fill opacity=1,draw opacity=0.2,thin,inner sep=-2.2pt}
+}%
+\tikzset{%
+	highlight2/.style={rectangle,fill=orange!15,draw,
+		fill opacity=1,draw opacity=0.2,thin,inner sep=-2.2pt}
+}%
+\newcommand{\mytikzmark}[2]{%
+	\tikz[ remember picture, anchor=base, baseline=(#1.base), inner sep=0pt]%
+	\node (#1) {#2};%
+	%\tikzmark{#1}#2%
+}%
+%
+\newcommand{\Highlight}[4][submatrix]{%
+	%\tikz[overlay, remember picture]{
+	\node[#2,fit=(#3.north west) (#4.south east)] (#1) {};%
+	%}
+}%
+\newcommand{\AdjustRight}[2]{%
+	%\tikz[overlay, remember picture, inner sep=0pt]{%
+	\node[overlay, remember picture, inner sep=0pt] (#1adj) at (#2.east |- #1) {};%
+	%}%
+}%
+\newcommand{\AdjustLeft}[2]{%
+	%\tikz[overlay, remember picture, inner sep=0pt]{%
+	\node[overlay, remember picture, inner sep=0pt] (#1adj) at (#2.west |- #1.north) {};%
+	%}%
+}%
+%
+%
+\AtBeginEnvironment{mysmallmatrix}{%
+	\setstretch{0.99}%
+	\setlength{\arraycolsep}{4pt}%
+}%
+\begin{tikzpicture}[remember picture]%
+\node[remember picture] at (0,0){%
+	$\begin{aligned}%
+	\text{\small $\tensor{R}^{0,2}$} &= \frac{1}{16} && \hspace{-0.4cm} \left[\begin{mysmallmatrix}%
+	16 & 12 & 6 & 2 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \mytikzmark{r0}{0} \\ 
+	0 & 4 & 9 & 11 & 10 & 6 & 3 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \mytikzmark{r1}{0} \\ 
+	0 & 0 & 1 & 3 & 6 & 10 & 12 & 12 & 10 & 6 & 3 & 1 & 0 & 0 & 0 & 0 & 0 & \mytikzmark{r2}{0} \\ 
+	0 & 0 & 0 & 0 & 0 & 0 & 1 & 3 & 6 & 10 & 12 & 12 & 10 & 6 & 3 & 1 & 0 & \mytikzmark{r3}{0} \\ 
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 3 & 6 & 10 & 11 & 9 & 4 & \mytikzmark{r4}{0} \\ 
+	\mytikzmark{c0}{0} & \mytikzmark{c1}{0} & \mytikzmark{c2}{0} & \mytikzmark{c3}{0} & \mytikzmark{c4}{0} & \mytikzmark{c5}{0} & \mytikzmark{c6}{0} & \mytikzmark{c7}{0} & \mytikzmark{c8}{0} & \mytikzmark{c9}{0} & \mytikzmark{c10}{0} & \mytikzmark{c11}{0} & \mytikzmark{c12}{0} & \mytikzmark{c13}{0} & \mytikzmark{c14}{2} & \mytikzmark{c15}{6} & \mytikzmark{c16}{12} & \mytikzmark{c17}{16}
+	\end{mysmallmatrix}\right]%
+	\end{aligned}$};%
+%
+% 	\node[below=5pt of c0.south, anchor=north]{ $ b^0_0 $};
+\foreach \i in {0,...,17}
+{
+	\node[below=6pt of c\i.south, anchor=north] (b2\i) { $ b^2_{\i} $};
+	\draw [->] ($(b2\i.north)+(0,-0.05)$) -- ($(c\i.south)+(0,-0.05)$);
+}
+\AdjustRight{r0}{c17}\AdjustRight{r1}{c17}\AdjustRight{r2}{c17}\AdjustRight{r3}{c17}\AdjustRight{r4}{c17}
+\foreach \i in {0,...,4}
+{
+	\node[right=8pt of r\i adj.east, anchor=west] (b0\i) { $ b^0_{\i} $};
+	\draw [->] ($(b0\i.west)+(0.02,0)$) -- ($(r\i adj)+(0.1,0)$);
+}
+\node[right=8pt of c17.east, anchor=west] (b05) { $ b^0_{5} $};
+\draw [->] ($(b05.west)+(0.02,0)$) -- ($(c17.east)+(0.1,0)$);
+%
+\draw [decorate,decoration={brace,amplitude=4pt,mirror,raise=6pt}]
+(b20.west) -- (b217.east) node [black,midway,yshift=-0.55cm] {\small $\mathcal{B}^2$};
+%
+\draw [decorate,decoration={brace,amplitude=4pt,raise=6pt}]
+(b00.north) -- (b05.south) node [black,midway,xshift=0.7cm] {\small $\mathcal{B}^0$};
+%
+\draw [decorate,decoration={brace,amplitude=4pt,raise=27pt}]
+(b00.north) -- (b03.south) node [black,midway,xshift=1.55cm] {\small $\mathcal{HB}^0$};
+\end{tikzpicture}%
+\tikzexternalenable%

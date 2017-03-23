@@ -1,0 +1,44 @@
+% !TeX root = ../../main.tex
+%
+%
+\tikzexternaldisable%
+\tikzset{%
+	highlightStd/.style={rectangle,draw,thick,inner sep=-1.6pt, rounded corners, opacity=1,color=black%!50, fill=black!15,fill opacity=0.2
+	}
+}%
+\tikzset{%
+	highlight0/.style={rectangle,fill=black!15,draw,
+		fill opacity=1,draw opacity=0.2,inner sep=-2.2pt}
+}%
+\tikzset{%
+	highlight1/.style={rectangle,fill=blue!15,draw,
+		fill opacity=1,draw opacity=0.2,thin,inner sep=-2.2pt}
+}%
+\tikzset{%
+	highlight2/.style={rectangle,fill=orange!15,draw,
+		fill opacity=1,draw opacity=0.2,thin,inner sep=-2.2pt}
+}%
+\newcommand{\mytikzmarkt}[2]{%
+	\tikz[inner sep=0pt, overlay, remember picture, anchor=base, baseline=(#1.base)]%
+	\node (#1) {#2};%
+	%\tikzmark{#1}#2%
+}%
+
+\begin{tikzpicture}[remember picture]%
+\node[remember picture] (R) at (0,0){%
+$\begin{aligned}%
+\text{\small $\tensor{R}^{0,1}$} &= \left[\begin{matrix}%
+\mytikzmarkt{left0}{1}  &  \mytikzmarkt{left1}{0.5}   & 0  & 0  & 0  & 0  & 0\\
+0  & 0.5  & 0.66  & 0  & 0  & 0  & 0\\
+0 & 0  & \mytikzmarkt{right0}{0.33} & \mytikzmarkt{right1}{1}  & 0.75  & 0  & 0\\
+0 & 0  & 0  & 0  & 0.25  & 1  & 0\\
+0 & 0  & 0  & 0  & 0  & 0  & 0\\
+\end{matrix} \right]
+\end{aligned}$};
+
+\end{tikzpicture}%
+\tikz[overlay, remember picture] {
+	\fill[gray, fill opacity=0.2] (left0.north west) rectangle (right0.south east);
+	\fill[blue, fill opacity=0.2] (left1.north west) rectangle (right1.south east);
+}%
+\tikzexternalenable%

@@ -1,0 +1,220 @@
+% !TeX root = ../../../main.tex
+\tikzexternaldisable%
+\tikzset{%
+	highlightStd/.style={rectangle,draw,semithick,inner sep=-1.6pt, rounded corners, opacity=1,color=black%!50, fill=black!15,fill opacity=0.2
+	}
+}%
+\tikzset{%
+	highlight0/.style={rectangle,fill=black!15,draw,
+		fill opacity=1,draw opacity=0.2,inner sep=-2.2pt}
+}%
+\tikzset{%
+	highlight1/.style={rectangle,fill=blue!15,draw,
+		fill opacity=1,draw opacity=0.2,thin,inner sep=-2.2pt}
+}%
+\tikzset{%
+	highlight2/.style={rectangle,fill=orange!15,draw,
+		fill opacity=1,draw opacity=0.2,thin,inner sep=-2.2pt}
+}%
+\newcommand{\mytikzmark}[2]{%
+	\tikz[overlay, remember picture, anchor=base, baseline=(#1.base), font=\tiny]%
+	\node (#1) {#2};%
+	%\tikzmark{#1}#2%
+}%
+%
+\newcommand{\Highlight}[4][submatrix]{%
+	%\tikz[overlay, remember picture]{
+		\node[#2,fit=(#3.north west) (#4.south east)] (#1) {};%
+	%}
+}%
+\newcommand{\AdjustRight}[2]{%
+	%\tikz[overlay, remember picture, inner sep=0pt]{%
+		\node[overlay, remember picture, inner sep=0pt] (#1adj) at (#2.east |- #1.south) {};%
+	%}%
+}%
+\newcommand{\AdjustLeft}[2]{%
+	%\tikz[overlay, remember picture, inner sep=0pt]{%
+		\node[overlay, remember picture, inner sep=0pt] (#1adj) at (#2.west |- #1.north) {};%
+	%}%
+}%
+\begin{tikzpicture}[remember picture]%
+\node[remember picture] (Mglob) at (0,0){%
+	$\begin{aligned}%
+\text{\small $\tensor{M}^{\glob}_{0}$}   &= &&\left[\begin{smallmatrix}
+\mytikzmark{leftE0}{1}\mytikzmark{left0M0}{1} & 0 & 0 & 0 & 0 & 0 \\ 
+0 & \mytikzmark{leftE1}{1} & 0 & 0 & 0 & 0 \\ 
+0 & 0 & \mytikzmark{rightE0}{1}  & 0 & 0 & 0  \\ 
+0 & 0 & 0 & \mytikzmark{rightE1}{1} & 0 & 0   \\ 
+0 & 0 & 0 & 0 & 1 & 0 \\ 
+0 & 0 & 0 & 0 & 0 & \mytikzmark{right0M0}{1} %
+\end{smallmatrix}\right] \\[5pt]
+%
+	\text{\small $\tensor{M}^{\glob}_1 $}&= &\frac{1}{4} &\left[\begin{smallmatrix} %
+	\mytikzmark{left0M1}{4} & 2 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+	0 & 2 & 3 & 1 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+	0 & 0 & 1 & 3 & \mytikzmark{leftE2}{3} & 1 & 0 & 0 & 0 & 0\\ 
+	0 & 0 & 0 & 0 & 1 & 3 & 3 & 1 & 0 & \mytikzmark{right0M1}{0}  \\ 
+	\mytikzmark{left1M1}{0} & 0 & 0 & 0 & 0 & 0 & \mytikzmark{rightE2}{4} & 0 & 0 & \mytikzmark{right1M1}{0}\\
+\end{smallmatrix}\right]\\[5pt]
+%
+\text{\small $\tensor{M}^{\glob}_2 $} &= & \frac{1}{16} &\left[\begin{smallmatrix} %
+	\mytikzmark{left0M2}{16} & 12 & 6 & 2 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
+	0 & 4 & 9 & 11 & 10 & 6 & 3 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+	0 & 0 & 1 & 3 & 6 & 10 & 12 & 12 & 10 & 6 & \mytikzmark{leftE3}{3} & 1 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+	0 & 0 & 0 & 0 & 0 & 0 & 1 & 3 & 6 & 10 & 12 & 12 & \mytikzmark{leftE4}{10} & \mytikzmark{leftE5}{6} & \mytikzmark{leftE6}{3} & \mytikzmark{leftE7}{1} & 0 & \mytikzmark{right0M2}{0} \\ 
+	\mytikzmark{left1M2}{0} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 4 & 12 & 12 & 4 & 0 & 0 & 0 & \mytikzmark{right1M2}{0}\\
+		\mytikzmark{left2M2}{0} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \mytikzmark{rightE3}{16} & 0 & 0 & 0 & 0 & 0\\ 
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 16 & 0 & 0 & 0 & 0\\ 
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \mytikzmark{rightE4}{16\;} & 0 & 0 & 0\\ 
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \mytikzmark{rightE5}{16} & 0 & 0\\ 
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \mytikzmark{rightE6}{16} & 0\\ 
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \mytikzmark{right2M2}{16} \mytikzmark{rightE7}{\;\;\;\;}%
+\end{smallmatrix}\right] %
+\end{aligned}$};
+%
+\begin{pgfonlayer}{background}
+%
+%
+\AdjustLeft{left0M2}{left0M2}\AdjustLeft{left1M2}{left0M2}\AdjustLeft{left2M2}{left0M2}%
+\AdjustRight{right0M2}{right2M2}\AdjustRight{right1M2}{right2M2}\AdjustRight{right2M2}{right2M2}%
+%
+\Highlight[second0M0]{highlight0}{left0M0}{right0M0}
+\Highlight[second0M1]{highlight0}{left0M1}{right0M1}
+\Highlight[second1M1]{highlight1}{left1M1}{right1M1} 
+\Highlight[second0M2]{highlight0}{left0M2adj}{right0M2adj}
+\Highlight[second1M2]{highlight1}{left1M2adj}{right1M2adj}
+\Highlight[second2M2]{highlight2}{left2M2adj}{right2M2adj}
+%
+%
+\Highlight[firstE2]{highlightStd}{leftE2}{rightE2} 
+%\Highlight[firstE3]{highlightStd}{leftE3}{rightE3}
+%
+\Highlight[firstE0]{highlightStd}{leftE0}{rightE0}
+\Highlight[firstE1]{highlightStd}{leftE1}{rightE1}
+%
+\Highlight[firstE3]{highlightStd}{leftE3}{rightE3}
+%\Highlight[firstE4]{highlightStd}{leftE4}{rightE4}
+%\Highlight[firstE5]{highlightStd}{leftE5}{rightE5}
+%\Highlight[firstE6]{highlightStd}{leftE6}{rightE6}
+\Highlight[firstE7]{highlightStd}{leftE7}{rightE7}
+\end{pgfonlayer}{background}
+%
+\node[remember picture, right= 2cm of Mglob.north east, anchor=north west](Mloc){
+	$\begin{aligned}%
+	\mytikzmark{MLe0}{\small $\tensor{M}^{\loc}_{\epsilon_0}$}  &&&= &&\left[\begin{smallmatrix}
+		\mytikzmark{left0Me0}{1} & 0 & 0\\ 
+		0 & 1 & 0 \\ 
+		0 & 0 & \mytikzmark{right0Me0}{1} \end{smallmatrix}\right]  \\
+	%
+		\mytikzmark{MLe1}{\small $\tensor{M}^{\loc}_{\epsilon_1}$} &&&= &&\left[\begin{smallmatrix}
+		\mytikzmark{left0Me1}{1} & 0 & 0 \\ 
+		0 & 1 & 0 \\ 
+		0 & 0 & \mytikzmark{right0Me1}{1} \end{smallmatrix}\right] \\
+	%
+	\mytikzmark{MLe2}{\small $\tensor{M}^{\loc}_{\epsilon_2}$}  &&&=  &\frac{1}{4} &\left[\begin{smallmatrix}
+\mytikzmark{left0Me2}{3} & 1 & 0  \\ 
+1 & 3 & \mytikzmark{right0Me2}{3}   \\ 
+\mytikzmark{left1Me2}{0} & 0 & \mytikzmark{right1Me2}{4}
+ \end{smallmatrix}\right]  \\
+%
+	\mytikzmark{MLe3}{\small $\tensor{M}^{\loc}_{\epsilon_3}$}  &&&= &\frac{1}{16} &\left[\begin{smallmatrix}
+	\mytikzmark{left0Me3}{3} & 1 & 0  \\ 
+	12 & 12 & \mytikzmark{right0Me3}{10}  \\ 
+	\mytikzmark{left1Me3}{4} & 12 & \mytikzmark{right1Me3}{12} \\ 
+	\mytikzmark{left2Me3}{0} & 0 & \mytikzmark{right2Me3}{16}\\
+\end{smallmatrix}\right]  \\
+	%
+	\mytikzmark{MLe4}{\small $\tensor{M}^{\loc}_{\epsilon_4}$}  &&&=&\frac{1}{16} & \left[\begin{smallmatrix}
+		\mytikzmark{left0Me4}{1} & 0 &  0\\ 
+	12 & 10 & \mytikzmark{right0Me4}{6}    \\ 
+			\mytikzmark{left1Me4}{12} & 12 & \mytikzmark{right1Me4}{4}    \\ 
+			\mytikzmark{left2Me4}{0} & 16 & 0  \\		
+		0& 0 & \mytikzmark{right2Me4}{16} \\		
+\end{smallmatrix}\right]  \\
+%	%
+\mytikzmark{MLe5}{\small $\tensor{M}^{\loc}_{\epsilon_5}$}  &&&= &\frac{1}{16} &\left[\begin{smallmatrix}
+	\mytikzmark{left0Me5}{10} & 6 &  \mytikzmark{right0Me5}{3}\\ 
+	\mytikzmark{left1Me5}{12} & 4 & \mytikzmark{right1Me5}{0}\\ 
+	\mytikzmark{left2Me5}{16} & 0 & 0  \\		
+		0 & 16 & 0  \\		
+	0& 0 & \mytikzmark{right2Me5}{16} \\		
+\end{smallmatrix}\right]  \\
+	%
+\mytikzmark{MLe6}{\small $\tensor{M}^{\loc}_{\epsilon_6}$ }  &&&= &\frac{1}{16} &\left[\begin{smallmatrix}
+	\mytikzmark{left0Me6}{6} & 3 &  \mytikzmark{right0Me6}{1}\\ 
+	\mytikzmark{left1Me6}{4} & 0 & \mytikzmark{right1Me6}{0}   \\  
+		\mytikzmark{left2Me6}{16} & 0 & 0  \\		
+		0 & 16 & 0  \\		
+	0& 0 & \mytikzmark{right2Me6}{16}  \\
+\end{smallmatrix}\right]  \\
+%	%
+\mytikzmark{MLe7}{\small $\tensor{M}^{\loc}_{\epsilon_7}$}  &&&= &\frac{1}{16} &\left[\begin{smallmatrix}
+	\mytikzmark{left0Me7}{3} & 1 &  \mytikzmark{right0Me7}{0}\\ 
+	\mytikzmark{left2Me7}{16} & 0 & 0  \\		
+0 & 16 & 0  \\		
+0& 0 & \mytikzmark{right2Me7}{16} \\	
+\end{smallmatrix}\right]  \\
+%	%
+\mytikzmark{MLe8}{\small $\tensor{M}^{\loc}_{\epsilon_8}$}  &&&= &\frac{1}{16} &\left[\begin{smallmatrix}
+\mytikzmark{left0Me8}{1} & 0 &  \mytikzmark{right0Me8}{0}\\ 
+\mytikzmark{left2Me8}{16} & 0 & 0  \\		
+0 & 16 & 0  \\		
+0& 0 & \mytikzmark{right2Me8}{16}\\	
+\end{smallmatrix}\right] 
+\end{aligned}$
+};
+%
+\begin{pgfonlayer}{background}
+\Highlight[second0Me0]{highlight0}{left0Me0}{right0Me0}
+%
+\Highlight[second0Me1]{highlight0}{left0Me1}{right0Me1}
+%
+\Highlight[second0Me2]{highlight0}{left0Me2}{right0Me2}
+\Highlight[second1Me2]{highlight1}{left1Me2}{right1Me2}
+%
+\AdjustLeft{left0Me3}{left1Me4}\AdjustLeft{left1Me3}{left1Me4}\AdjustLeft{left2Me3}{left1Me4}%
+\AdjustRight{right0Me3}{right2Me3}\AdjustRight{right1Me3}{right2Me3}\AdjustRight{right2Me3}{right2Me3}%
+\Highlight[second0Me3]{highlight0}{left0Me3adj}{right0Me3adj}
+\Highlight[second1Me3]{highlight1}{left1Me3adj}{right1Me3adj}
+\Highlight[second2Me3]{highlight2}{left2Me3adj}{right2Me3adj}
+%
+\AdjustLeft{left0Me4}{left1Me4}\AdjustLeft{left1Me4}{left1Me4}\AdjustLeft{left2Me4}{left1Me4}%
+\AdjustRight{right0Me4}{right2Me4}\AdjustRight{right1Me4}{right2Me4}\AdjustRight{right2Me4}{right2Me4}%
+\Highlight[second0Me4]{highlight0}{left0Me4adj}{right0Me4adj}
+\Highlight[second1Me4]{highlight1}{left1Me4adj}{right1Me4adj}
+\Highlight[second2Me4]{highlight2}{left2Me4adj}{right2Me4adj}
+%
+\AdjustLeft{left0Me5}{left1Me5}\AdjustLeft{left1Me5}{left1Me5}\AdjustLeft{left2Me5}{left1Me5}%
+\AdjustRight{right0Me5}{right2Me5}\AdjustRight{right1Me5}{right2Me5}\AdjustRight{right2Me5}{right2Me5}%
+\Highlight[second0Me5]{highlight0}{left0Me5adj}{right0Me5adj}
+\Highlight[second1Me5]{highlight1}{left1Me5adj}{right1Me5adj}
+\Highlight[second2Me5]{highlight2}{left2Me5adj}{right2Me5adj}
+%
+\AdjustLeft{left0Me6}{left2Me6}\AdjustLeft{left1Me6}{left2Me6}\AdjustLeft{left2Me6}{left2Me6}%
+\AdjustRight{right0Me6}{right2Me6}\AdjustRight{right1Me6}{right2Me6}\AdjustRight{right2Me6}{right2Me6}%
+\Highlight[second0Me6]{highlight0}{left0Me6adj}{right0Me6adj}
+\Highlight[second1Me6]{highlight1}{left1Me6adj}{right1Me6adj}
+\Highlight[second2Me6]{highlight2}{left2Me6adj}{right2Me6adj}
+%
+\AdjustLeft{left0Me7}{left2Me7}\AdjustLeft{left2Me7}{left2Me7}%
+\AdjustRight{right0Me7}{right2Me7}\AdjustRight{right2Me7}{right2Me7}%
+\Highlight[second0Me7]{highlight0}{left0Me7adj}{right0Me7adj}
+\Highlight[second2Me7]{highlight2}{left2Me7adj}{right2Me7adj}
+%
+\AdjustLeft{left0Me8}{left2Me8}\AdjustLeft{left2Me8}{left2Me8}%
+\AdjustRight{right0Me8}{right2Me8}\AdjustRight{right2Me8}{right2Me8}%
+\Highlight[second0Me8]{highlight0}{left0Me8adj}{right0Me8adj}
+\Highlight[second2Me8]{highlight2}{left2Me8adj}{right2Me8adj}
+\end{pgfonlayer}{background}
+%
+%%
+%\tikz[overlay, remember picture] {
+  \draw[->,thick,black,densely dashed,opacity=0.5] (firstE0.north east) -- (MLe0.west) node [] {};
+  \draw[->,thick,black,densely dashed,opacity=0.5] (firstE1.south east) |- (MLe1) node [] {};
+  \draw[->,thick,black,densely dashed,opacity=0.5] (firstE2.north east) |- (MLe2) node [] {};
+   \draw[->,thick,black,densely dashed,opacity=0.5] ($(firstE3.north)+(0.1,0)$) |- ($(MLe3.north west)+(0.15,-0.17)$) node [] {};
+   \draw[->,thick,black,densely dashed,opacity=0.5] (firstE7.south) |- (MLe8.west) node [] {};
+%}
+
+\end{tikzpicture}
+\tikzexternalenable

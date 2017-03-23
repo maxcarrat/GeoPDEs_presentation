@@ -1,0 +1,21 @@
+% !TeX root = ../../../main.tex
+\begin{tikzpicture}
+\begin{axis}[
+    hide axis,
+    scale only axis,
+    height=0pt,
+    width=0pt,
+    colormap/jet,
+    colorbar horizontal,
+point meta min=-0.850766340087778,
+point meta max=30.4286012225658,
+    colorbar style={
+    	ylabel= \rotatebox{-90}{$ \sigma_{xx} $ },
+		label style ={font=\normalsize},
+    	align=right,
+        width=8cm
+    },
+]
+    \addplot [draw=none] coordinates {(0,0)};
+\end{axis}
+\end{tikzpicture}

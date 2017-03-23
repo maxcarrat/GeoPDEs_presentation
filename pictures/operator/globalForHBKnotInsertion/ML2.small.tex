@@ -1,0 +1,172 @@
+% !TeX root = ../../../main.tex
+%
+%
+\tikzexternaldisable%
+\tikzset{%
+	highlightStd/.style={rectangle,draw,thick,inner sep=-1.6pt, rounded corners, opacity=1,color=black%!50, fill=black!15,fill opacity=0.2
+	}
+}%
+\tikzset{%
+	highlight0/.style={rectangle,fill=black!15,draw,
+		fill opacity=1,draw opacity=0.2,inner sep=-2.2pt}
+}%
+\tikzset{%
+	highlight1/.style={rectangle,fill=blue!15,draw,
+		fill opacity=1,draw opacity=0.2,thin,inner sep=-2.2pt}
+}%
+\tikzset{%
+	highlight2/.style={rectangle,fill=orange!15,draw,
+		fill opacity=1,draw opacity=0.2,thin,inner sep=-2.2pt}
+}%
+\newcommand{\mytikzmark}[2]{%
+	\tikz[overlay, remember picture, anchor=base, baseline=(#1.base), font=\tiny]%
+	\node (#1) {#2};%
+	%\tikzmark{#1}#2%
+}%
+%
+\newcommand{\Highlight}[4][submatrix]{%
+	%\tikz[overlay, remember picture]{
+	\node[#2,fit=(#3.north west) (#4.south east)] (#1) {};%
+	%}
+}%
+\newcommand{\AdjustRight}[2]{%
+	%\tikz[overlay, remember picture, inner sep=0pt]{%
+	\node[overlay, remember picture, inner sep=0pt] (#1adj) at (#2.east |- #1.south east) {};%
+	%}%
+}%
+\newcommand{\AdjustLeft}[2]{%
+	%\tikz[overlay, remember picture, inner sep=0pt]{%
+	\node[overlay, remember picture, inner sep=0pt] (#1adj) at (#2.north west |- #1.north west) {};%
+	%}%
+}%
+%
+%
+\begin{tikzpicture}[remember picture]%
+\node[remember picture] (R) at (0,0){%
+$\begin{aligned}%
+\text{\small $\tensor{R}^{0,2}$} &= \frac{1}{16} && \hspace{-0.4cm} \left[\begin{smallmatrix}%
+\mytikzmark{left0}{16} & 12 & 6 & 2 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
+0 & 4 & 9 & 11 & 10 & 6 & 3 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 0 & 1 & 3 & 6 & 10 & 12 & 12 & 10 & 6 & 3 & 1 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0 & 0 & 0 & 1 & 3 & 6 & 10 & 12 & 12 & 10 & 6 & 3 & 1 & 0 & \mytikzmark{right0}{0}\\ 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 3 & 6 & 10 & 11 & 9 & 4 & 0\\ 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 2 & 6 & 12 & 16
+\end{smallmatrix} \right]\\
+\text{\small $\tensor{R}^{1,2}$} &= \frac{1}{16}&&\hspace{-0.4cm}  \left[\begin{smallmatrix} %
+16 & 8 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+0 & 8 & 12 & 4 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+0 & 0 & 4 & 12 & 12 & 4 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 4 & 12 & 12 & 4 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 0 & 0 & 4 & 12 & 12 & 4 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 4 & 12 & 12 & 4 & 0 & 0 & 0 & 0 & 0 & 0\\
+\mytikzmark{left1}{0} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 4 & 12 & 12 & 4 & 0 & 0 & 0 &  \mytikzmark{right1}{0}\\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 4 & 12 & 12 & 4 & 0 & 0\\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 4 & 12 & 8 & 0\\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 8 & 16\\
+\end{smallmatrix}\right]\\
+\text{\small $\tensor{R}^{2,2}$} &= &&\hspace{-0.4cm} \left[\begin{smallmatrix} %
+1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+\mytikzmark{left2}{0} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0\\ 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0\\ 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \mytikzmark{right2}{1}
+\end{smallmatrix}\right]%
+\end{aligned}$};
+%
+	\begin{pgfonlayer}{background}
+		\Highlight[first0]{highlight0}{left0}{right0}
+		\Highlight[first1]{highlight1}{left1}{right1}
+		\Highlight[first2]{highlight2}{left2}{right2}
+	\end{pgfonlayer}{background}
+%\end{tikzpicture}
+%
+%
+%
+%\hspace{-0.1cm}%
+%\begin{minipage}[t]{0.5\textwidth}%
+%\begin{align*}%
+\node[remember picture, right=of R.north east, anchor=north west, xshift=-1.1cm](M){
+$\begin{aligned}%
+\text{\small $\tensor{M}^{\glob}_2$}  &= \frac{1}{16} \left[\,\begin{smallmatrix} %
+\mytikzmark{left0}{16} & 12 & 6 & 2 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0  \\ 
+0 & 4 & 9 & 11 & 10 & 6 & 3 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
+0 & 0 & 1 & 3 & 6 & 10 & 12 & 12 & 10 & 6 & 3 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
+0 & 0 & 0 & 0 & 0 & 0 & 1 & 3 & 6 & 10 & 12 & 12 & 10 & 6 & 3 & 1 & 0 & \mytikzmark{right0}{0}  \\ 
+\mytikzmark{left1}{0} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 4 & 12 & 12 & 4 & 0 & 0 & 0 & \mytikzmark{right1}{0} \\
+\mytikzmark{left2}{0} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 16 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 16 & 0 & 0 & 0 & 0 \\ 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 16 & 0 & 0 & 0 \\ 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 16 & 0 & 0 \\ 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 16 & 0 \\ 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \mytikzmark{right2}{16} 
+\end{smallmatrix}\,\right]%
+\end{aligned}$};
+%\end{align*}%
+%\begin{minipage}[t]{\textwidth}
+
+%\end{minipage}
+%\end{minipage}%
+
+\begin{pgfonlayer}{background}
+\AdjustLeft{left0}{left0}\AdjustLeft{left1}{left0}\AdjustLeft{left2}{left0}%
+\AdjustRight{right0}{right2}\AdjustRight{right1}{right2}\AdjustRight{right2}{right2}%
+\Highlight[second0]{highlight0}{left0adj}{right0adj}
+\Highlight[second1]{highlight1}{left1adj}{right1adj}
+\Highlight[second2]{highlight2}{left2adj}{right2adj}
+\end{pgfonlayer}{background}
+
+
+	\draw[->,thick,black,dashed,opacity=0.5] (first0.east) -- (second0.west) node [pos=0.66,above] {};
+	\draw[->,thick,black,dashed,opacity=0.5] (first1.east) -- (second1.west) node [pos=0.66,above] {};
+	\draw[->,thick,black,dashed,opacity=0.5] (first2.north east) -- (second2.south west)  node [pos=0.66,above] {};
+	%	% 	
+	%draw [decorate,decoration={brace,amplitude=2pt,raise=6pt},yshift=0pt]
+	\draw [draw=none]
+	(second2.east |- second0.north east) -- (second2.east |- second0.south east) node [black,midway,xshift=0.58cm,inner sep=1pt] (HB0) {\small $\mathcal{HB}^0$}; 
+	\draw [draw=none]
+	(second2.east |-second1.north east) -- (second2.east |- second1.south east) node [black,midway,xshift=0.58cm,inner sep=1pt] (HB1) {\small $\mathcal{HB}^1$};
+	\draw [draw=none]
+	(second2.east |-second2.north east) -- (second2.east |- second2.south east) node [black,midway,xshift=0.58cm,inner sep=1pt] (HB2) {\small $\mathcal{HB}^2$};
+	%
+	\draw [->,black] (second0.east) -- (HB0);
+	\draw [->,black] (second1.east) -- (HB1);
+	\draw [->,black] (second2.east) -- (HB2);
+	\draw [decorate,decoration={brace,amplitude=2pt,mirror,raise=6pt},yshift=-13pt]
+	(second2.south west) -- (second2.south east) node [black,midway,yshift=-0.5cm] {\small $\mathcal{B}^2$};
+	
+	\input{pictures/operator/globalForHBKnotInsertion/ML1.small.tex}%
+
+\end{tikzpicture}%
+%\tikz[overlay, remember picture] {
+%	\draw[->,thick,black,dashed,opacity=0.5] (first0.east) -- (second0.west) node [pos=0.66,above] {};
+%	\draw[->,thick,black,dashed,opacity=0.5] (first1.east) -- (second1.west) node [pos=0.66,above] {};
+%	\draw[->,thick,black,dashed,opacity=0.5] (first2.north east) -- (second2.south west)  node [pos=0.66,above] {};
+%	%	% 	
+%	%draw [decorate,decoration={brace,amplitude=2pt,raise=6pt},yshift=0pt]
+%	\draw [draw=none]
+%	(second2.east |- second0.north east) -- (second2.east |- second0.south east) node [black,midway,xshift=0.58cm,inner sep=1pt] (HB0) {\small $\mathcal{HB}^0$}; 
+%	\draw [draw=none]
+%	(second2.east |-second1.north east) -- (second2.east |- second1.south east) node [black,midway,xshift=0.58cm,inner sep=1pt] (HB1) {\small $\mathcal{HB}^1$};
+%	\draw [draw=none]
+%	(second2.east |-second2.north east) -- (second2.east |- second2.south east) node [black,midway,xshift=0.58cm,inner sep=1pt] (HB2) {\small $\mathcal{HB}^2$};
+%	%
+%	\draw [->,thick,black] (second0.east) -- (HB0);
+%	\draw [->,thick,black] (second1.east) -- (HB1);
+%	\draw [->,thick,black] (second2.east) -- (HB2);
+%	\draw [decorate,decoration={brace,amplitude=2pt,mirror,raise=6pt},yshift=-13pt]
+%	(second2.south west) -- (second2.south east) node [black,midway,yshift=-0.5cm] {\small $\mathcal{B}^2$};
+%}%
+\tikzexternalenable%

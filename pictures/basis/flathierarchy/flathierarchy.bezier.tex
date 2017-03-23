@@ -1,0 +1,119 @@
+% !TeX root = ../../../main.tex
+\tikzexternaldisable%
+\begin{tikzpicture}
+\small
+\node[inner sep=0pt] (elementMultiLevelSplines) 
+{%
+	%\resizebox{3.5cm}{3.5cm}{%
+	\input{pictures/basis/flathierarchy/multiLevelBasis1DElements.hb.mlextraction.tikz}%
+	%}%
+};%
+%\node[inner sep=0pt, visible on=<2->] (elementLevelSplines) at (0,0)
+%{%
+%	%\resizebox{3cm}{3cm}{%
+%	\input{pictures/basis/elementBasis/elementLevelSplines.tex}%
+%	%	}%
+%};%
+%\node[inner sep=0pt, visible on=<5->] (bernsteinPolynomials) at (8.5,0)
+%{%
+%	%\resizebox{3cm}{3cm}{%
+%	\input{pictures/basis/elementBasis/bernsteinPolynomials.tex}%
+%	%	}%
+%};%
+%%
+%\draw[->,thick, visible on=<3>]  ($(elementLevelSplines.north)+(0,0.1)$) -- (elementMultiLevelSplines.south west) %
+%node[midway, xshift=-0.3cm, fill=white, inner sep=-1pt ,visible on=<3->] {%
+% $ %
+%	\left[\begin{myverysmallmatrix} %
+%\restr{b_{2}^0}{\epsilon_3} \\ %
+%\restr{b_{3}^0}{\epsilon_3} \\ %
+%\restr{\textcolor{blue}{b_{6}^1}}{\epsilon_3} \\ %
+%\restr{\textcolor{orange}{ b_{12}^2 }}{\epsilon_3}%
+%\end{myverysmallmatrix}\right]   = %
+%	\frac{1}{16}\left[\begin{myverysmallmatrix}	%
+%			3 &    1 &    0\\%
+%			12   &  12   &  10\\%
+%			\color{blue}{4}   & \color{blue}{12} &  \color{blue}{12}\\%
+%			\color{orange}{0}   & \color{orange}{0} &   \color{orange}{16}%
+%			\end{myverysmallmatrix}\right]
+%%\tensor{ML}_{\epsilon_3}
+%%_{\normalsize \substack{\normalsize \tensor{ML}_{\epsilon_3}\\\text{ \normalsize multi-level operator}}}%
+%\cdot \left[\begin{myverysmallmatrix} \restr{\textcolor{gray}{b_{10}^2}}{\epsilon_3}\\ \restr{\textcolor{gray}{b_{11}^2}}{\epsilon_3}\\ \restr{\textcolor{orange}{b_{12}^2}}{\epsilon_3} \end{myverysmallmatrix}\right] $
+%};%
+%\draw[->,thick, visible on=<4->]  ($(elementLevelSplines.north)+(0,0.1)$) -- (elementMultiLevelSplines.south west) %
+%node[midway, xshift=-0.3cm, fill=white, inner sep=-1pt ,visible on=<3->] {%
+%	$ %
+%	\left[\begin{myverysmallmatrix} %
+%	\restr{b_{2}^0}{\epsilon_3} \\ %
+%	\restr{b_{3}^0}{\epsilon_3} \\ %
+%	\restr{\textcolor{blue}{b_{6}^1}}{\epsilon_3} \\ %
+%	\restr{\textcolor{orange}{ b_{12}^2 }}{\epsilon_3}%
+%	\end{myverysmallmatrix}\right]   = %
+%	\underbrace{\tensor{ML}_{\epsilon_3}}%
+%	%_{\text{ \normalsize multi-level operator}}%
+%	_{\substack{\text{\normalsize multi-level}\\\text{ \normalsize operator}}}
+%	\cdot \left[\begin{myverysmallmatrix} \restr{\textcolor{gray}{b_{10}^2}}{\epsilon_3}\\ \restr{\textcolor{gray}{b_{11}^2}}{\epsilon_3}\\ \restr{\textcolor{orange}{b_{12}^2}}{\epsilon_3} \end{myverysmallmatrix}\right] $
+%};%
+%\draw[<-,thick, visible on=<6->]   ($(elementLevelSplines.east)+(0.2,-0.8)$) -- ($(bernsteinPolynomials.west)+(-0.2,-0.8)$)%
+%node[midway,above] {%
+%	$ %
+%					\left[\begin{myverysmallmatrix} \restr{\textcolor{gray}{b_{10}^2}}{\epsilon_3}\\ \restr{\textcolor{gray}{b_{11}^2}}{\epsilon_3}\\ \restr{\textcolor{orange}{b_{12}^2}}{\epsilon_3} \end{myverysmallmatrix}\right]   = %
+%						\underbrace{\large \tensor{C}_{\epsilon_3}}_{\text{\normalsize \Bezier\ extraction}}%
+%						\cdot \left[\begin{myverysmallmatrix}B_0\\B_1\\B_2 \end{myverysmallmatrix}\right]  $
+%};%
+%\draw[->,thick, visible on=<7->]  ($(bernsteinPolynomials.north)+(0,0.1)$)  -- (elementMultiLevelSplines.south east) %
+%node[midway, xshift=0.2cm ,fill=white, inner sep=-1pt] {%
+%	%
+%	$ \left[\begin{myverysmallmatrix} %
+% 	\restr{b_{2}^0}{\epsilon_3} \\ %
+%	\restr{b_{3}^0}{\epsilon_3} \\ %
+%	\restr{\textcolor{blue}{ b_{6}^1 }}{\epsilon_3} \\ %
+%	\restr{\textcolor{orange}{ b_{12}^2 }}{\epsilon_3}%
+%	\end{myverysmallmatrix}\right] = \underbrace{\normalsize \tensor{ML}_{\epsilon_3} \cdot \tensor{C}_{\epsilon_3}}%_{\text{\normalsize multi-level \Bezier\ extraction}} \cdot
+%	_{\substack{\text{\normalsize multi-level}\\\text{ \normalsize \Bezier\ extraction}}}%
+%	 \left[\begin{myverysmallmatrix}B_0\\B_1\\B_2 \end{myverysmallmatrix}\right]$
+%};%
+%%
+%%
+\end{tikzpicture}%
+%
+\tikz[overlay, remember picture, visible on=<1>] {%
+%\draw[gray,fill=gray, fill opacity=0.2, visible on=<2>] (e0start) rectangle (e0end);
+\node[inner sep=0pt] (MLe0) at (midspace) { $ = \tensor{ML}_{\epsilon_0} \cdot \tensor{C}_{\epsilon_0} \cdot $ };%
+%\node[fit={(e0start) (e0end)}, inner sep=0pt, draw=gray,  rectangle,  thick] (e0rect) {};
+\node[fit={(HBe0start) (HBe0end)}, inner sep=0pt, draw=gray,  rectangle,  thick] (HBe0rect) {};
+\node[inner sep=0pt, anchor=east] (HB0e0) at (MLe0.west) {\input{pictures/basis/flathierarchy/multiLevelBasis1D.HB0e0.tikz}};%
+\node[inner sep=0pt, anchor=west] (B0e0) at (MLe0.east) {\input{pictures/basis/flathierarchy/bernsteinPolynomials.tex}};%
+%\draw[->,thick] (e0rect) -- (B0e0.north);
+\draw[->,thick] (HB0e0.south) -- (HBe0rect);
+}%
+%
+\tikz[overlay, remember picture, visible on=<2>] {%
+	\node[inner sep=0pt] (MLe1) at (midspace) { $ = \tensor{ML}_{\epsilon_1} \cdot \tensor{C}_{\epsilon_1} \cdot $ };%
+	%\node[fit={(e1start) (e1end)}, inner sep=0pt, draw=gray,  rectangle,  thick] (e1rect) {};
+    \node[fit={(HBe1start) (HBe1end)}, inner sep=0pt, draw=gray,  rectangle,  thick] (HBe1rect) {};
+	\node[inner sep=0pt, anchor=east] (HB0e1) at (MLe1.west) {\input{pictures/basis/flathierarchy/multiLevelBasis1D.HB0e1.tikz}};%
+	\node[inner sep=0pt, anchor=west] (B0e1) at (MLe1.east) {\input{pictures/basis/flathierarchy/bernsteinPolynomials.tex}};%
+	%\draw[->,thick] (e1rect) -- (B0e1.north);
+	\draw[->,thick] (HB0e1.south) -- (HBe1rect);
+}%
+\tikz[overlay, remember picture, visible on=<3>] {%
+	\node[inner sep=0pt] (MLe2) at (midspace) { $ = \tensor{ML}_{\epsilon_2} \cdot \tensor{C}_{\epsilon_2} \cdot $ };%
+	\%node[fit={(e2start) (e2end)}, inner sep=0pt, draw=gray,  rectangle,  thick] (e2rect) {};
+	\node[fit={(HBe2start) (HBe2end)}, inner sep=0pt, draw=gray,  rectangle,  thick] (HBe2rect) {};
+	\node[inner sep=0pt, anchor=east] (HB0e2) at (MLe2.west) {\input{pictures/basis/flathierarchy/multiLevelBasis1D.HB0e2.tikz}};%
+	\node[inner sep=0pt, anchor=west] (B0e2) at (MLe2.east) {\input{pictures/basis/flathierarchy/bernsteinPolynomials.tex}};%
+	%\draw[->,thick] (e2rect) -- (B0e2.north);
+	\draw[->,thick] (HB0e2.south) -- (HBe2rect);
+}%
+\tikz[overlay, remember picture, visible on=<4>] {%
+	\node[inner sep=0pt] (MLe3) at (midspace) { $ = \tensor{ML}_{\epsilon_3} \cdot \tensor{C}_{\epsilon_3} \cdot $ };%
+	%\node[fit={(e3start) (e3end)}, inner sep=0pt, draw=gray,  rectangle,  thick] (e3rect) {};
+	\node[fit={(HBe3start) (HBe3end)}, inner sep=0pt, draw=gray,  rectangle,  thick] (HBe3rect) {};
+	\node[inner sep=0pt, anchor=east] (HB0e3) at (MLe3.west) {\input{pictures/basis/flathierarchy/multiLevelBasis1D.HB0e3.tikz}};%
+	\node[inner sep=0pt, anchor=west] (B0e3) at (MLe3.east) {\input{pictures/basis/flathierarchy/bernsteinPolynomials.tex}};%
+	%\draw[->,thick] (e3rect) -- (B0e3.north);
+	\draw[->,thick] (HB0e3.south) -- (HBe3rect);
+}%
+%
+\tikzexternalenable

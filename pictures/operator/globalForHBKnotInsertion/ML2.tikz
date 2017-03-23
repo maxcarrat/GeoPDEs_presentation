@@ -1,0 +1,152 @@
+% !TeX root = ../../../main.tex
+\tikzexternaldisable%
+
+\tikzset{%
+	highlight0/.style={rectangle,rounded corners,fill=black!15,draw,
+		fill opacity=0.2,thin,opacity=0.4,inner sep=0.6pt}
+}%
+\tikzset{%
+	highlight1/.style={rectangle,rounded corners,fill=blue!15,draw,
+		fill opacity=0.2,opacity=0.4,thin,inner sep=0.6pt}
+}%
+\tikzset{%
+	highlight2/.style={rectangle,rounded corners,fill=orange!15,draw,
+		fill opacity=0.2,opacity=0.4,thin,inner sep=0.6pt}
+}%
+\newcommand{\mytikzmark}[2]{%
+	\tikz[overlay, remember picture, anchor=base, baseline=(#1.base)]%
+	\node (#1) {#2};}%
+%
+\newcommand{\Highlight}[4][submatrix]{%
+	\tikz[overlay, remember picture]{
+		\node[#2,fit=(#3.north west) (#4.south east)] (#1) {}; }
+}%
+\newcommand{\AdjustRight}[2]{%
+	\tikz[overlay, remember picture]{%
+		\node (#1adj) at (#2.east |- #1.south east) {};%
+	}%
+}%
+\newcommand{\AdjustLeft}[2]{%
+	\tikz[overlay, remember picture]{%
+		\node (#1adj) at (#2.north west |- #1.north west) {};%
+	}%
+}%
+
+%\hspace{-0.55cm}
+\begin{tikzpicture}
+\normalsize
+\node[inner sep=0pt] (R02) at (0,3)
+{%
+	$%
+	\begin{aligned}
+	 \tensor{R}^{0,2} &=  & \frac{1}{16} & \left[\begin{myverysmallmatrix} %
+	 \mytikzmark{left0}{16} & 12 & 6 & 2 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
+	 0 & 4 & 9 & 11 & 10 & 6 & 3 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+	 0 & 0 & 1 & 3 & 6 & 10 & 12 & 12 & 10 & 6 & 3 & 1 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+	 0 & 0 & 0 & 0 & 0 & 0 & 1 & 3 & 6 & 10 & 12 & 12 & 10 & 6 & 3 & 1 & 0 & \mytikzmark{right0}{0}\\ 
+	 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 3 & 6 & 10 & 11 & 9 & 4 & 0\\ 
+	 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 2 & 6 & 12 & 16
+	 \end{myverysmallmatrix} \right]\\
+%	 
+	 \tensor{R}^{1,2} &= &\frac{1}{16}& \left[\begin{myverysmallmatrix} %
+	 16 & 8 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+	 0 & 8 & 12 & 4 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+	 0 & 0 & 4 & 12 & 12 & 4 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+	 0 & 0 & 0 & 0 & 4 & 12 & 12 & 4 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+	 0 & 0 & 0 & 0 & 0 & 0 & 4 & 12 & 12 & 4 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+	 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 4 & 12 & 12 & 4 & 0 & 0 & 0 & 0 & 0 & 0\\
+	 \mytikzmark{left1}{0} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 4 & 12 & 12 & 4 & 0 & 0 & 0 &  \mytikzmark{right1}{0}\\
+	 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 4 & 12 & 12 & 4 & 0 & 0\\
+	 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 4 & 12 & 8 & 0\\
+	 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 8 & 16\\
+	 \end{myverysmallmatrix}\right]\\
+%
+	\tensor{R}^{2,2} &= && \left[\begin{myverysmallmatrix} %
+1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+\mytikzmark{left2}{0} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0\\ 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0\\ 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \mytikzmark{right2}{1}
+\end{myverysmallmatrix}\right]%
+\AdjustLeft{left1}{left0}\AdjustLeft{left2}{left0}
+\Highlight[first1]{highlight1}{left1adj}{right1}%
+\Highlight[first0]{highlight0}{left0}{right0}%
+\Highlight[first2]{highlight2}{left2adj}{right2}%
+\end{aligned}%
+$%
+};%
+%
+\node[inner sep=0pt, right= of R02.south east,anchor=south east,xshift=5.1cm] (Mglob2) %at (7.2,0)
+{%
+	$%
+	\displaystyle%
+	 \left[\begin{myverysmallmatrix} %
+	\mytikzmark{left0}{16} & 12 & 6 & 2 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0  \\ 
+	0 & 4 & 9 & 11 & 10 & 6 & 3 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
+	0 & 0 & 1 & 3 & 6 & 10 & 12 & 12 & 10 & 6 & 3 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
+	0 & 0 & 0 & 0 & 0 & 0 & 1 & 3 & 6 & 10 & 12 & 12 & 10 & 6 & 3 & 1 & 0 & \mytikzmark{right0}{0}\\ 
+	0\llap{\mytikzmark{left1}{\phantom{16}}} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 4 & 12 & 12 & 4 & 0 & 0 & 0 & \mytikzmark{right1}{0}\\
+	0\llap{\mytikzmark{left2}{\phantom{16}}} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 16 & 0 & 0 & 0 & 0 & 0\\ 
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 16 & 0 & 0 & 0 & 0 \\ 
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 16 & 0 & 0 & 0 \\ 
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 16 & 0 & 0 \\ 
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 16 & 0 \\ 
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \mytikzmark{right2}{16} 
+	\end{myverysmallmatrix}
+	\AdjustRight{right0}{right2}\AdjustRight{right1}{right2}\AdjustLeft{left1}{left0}\AdjustLeft{left2}{left0}%
+	\Highlight[second0]{highlight0}{left0}{right0adj}%
+	\Highlight[second1]{highlight1}{left1adj}{right1adj}%
+	\Highlight[second2]{highlight2}{left2adj}{right2}%
+	\right]%
+%	\tikz[overlay, remember picture]{%
+%		\node (right0adj) at (right2.east |- right0.south east) {};%
+%	}%
+	$
+};%
+
+\node[inner sep=0pt, yshift=15pt] () at (Mglob2.north)
+{%
+$%
+\displaystyle%
+\tensor{M}^{\glob}_2 = \frac{1}{16} \cdot
+	$%
+};%
+%
+\end{tikzpicture}
+\tikz[overlay, remember picture] {
+		\draw[->,thick,black,dashed,opacity=0.5] (first0) -| ($(second0.north east)+(-0.2,0)$) node [pos=0.66,above] {};
+		\draw[->,thick,black,dashed,opacity=0.5] ($(first1.south east)+(-2.3,0)$) |- (second1.west) node [pos=0.66,above] {};
+		\draw[->,thick,black,dashed,opacity=0.5] (first2) -- (second2) node [pos=0.66,above] {};
+	%	% 	
+		%draw [decorate,decoration={brace,amplitude=2pt,raise=6pt},yshift=0pt]
+		\draw [draw=none]
+		(second2.east |- second0.north east) -- (second2.east |- second0.south east) node [black,midway,xshift=0.58cm,inner sep=1pt] (HB0) {\small $\mathcal{HB}^0$}; 
+		\draw [draw=none]
+		(second2.east |-second1.north east) -- (second2.east |- second1.south east) node [black,midway,xshift=0.58cm,inner sep=1pt] (HB1) {\small $\mathcal{HB}^1$};
+		\draw [draw=none]
+		(second2.east |-second2.north east) -- (second2.east |- second2.south east) node [black,midway,xshift=0.58cm,inner sep=1pt] (HB2) {\small $\mathcal{HB}^2$};
+%
+		\draw [->,thick,black] (second0.east) -- (HB0);
+		\draw [->,thick,black] (second1.east) -- (HB1);
+		\draw [->,thick,black] (second2.east) -- (HB2);
+		\draw [decorate,decoration={brace,amplitude=2pt,mirror,raise=6pt},yshift=-13pt]
+		(second2.south west) -- (second2.south east) node [black,midway,yshift=-0.5cm] {\small $\mathcal{B}^2$};
+}%
+
+
+
+
+\tikzexternalenable

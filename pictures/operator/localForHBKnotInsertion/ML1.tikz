@@ -1,0 +1,86 @@
+% !TeX root = ../../main.tex
+%\tikzexternaldisable%
+%\begin{tikzpicture}
+%\tikzset{%
+%  highlight0/.style={rectangle,rounded corners,fill=black!15,draw,
+%    fill opacity=0.2,thin,inner sep=-2.1pt}
+%}%
+%\tikzset{%
+%	highlight1/.style={rectangle,rounded corners,fill=blue!15,draw,
+%		fill opacity=0.2,thin,inner sep=-2.1pt}
+%}%
+%\tikzset{%
+%	highlight2/.style={rectangle,rounded corners,fill=orange!15,draw,
+%		fill opacity=0.2,thin,inner sep=-2.1pt}
+%}%
+%\newcommand{\tikzmark}[2]{\tikz[overlay,remember picture,
+%  baseline=(#1.base), font=\tiny] \node (#1) {#2};}%
+%%
+%\newcommand{\Highlight}[2][submatrix]{%
+%    \tikz[overlay,remember picture]{
+%%    \node (#1ne) at (right.north east) [] {};
+%%    \node (#1nw) at (left.north west) [] {};
+%%    \node (#1se) at (right.south east) [] {};
+%%    \node (#1sw) at (left.south west) [] {};
+%    \node[#2,fit=(left.north west) (right.south east)] (#1) {};
+%	\node (#1ne) at (#1.north east) [] {};
+%	\node (#1se) at (#1.south east) [] {};
+%	\node (#1nw) at (#1.north west) [] {};
+%	\node (#1sw) at (#1.south west) [] {};}
+%}%
+\begin{minipage}[t]{0.5\textwidth}%
+	\vspace*{1cm}
+\begin{align*}%
+M^{0,1} &= \frac{1}{4} && \left[\begin{smallmatrix} %
+\tikzmark{left}{4} & 2 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 2 & 3 & 1 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 0 & 1 & 3 & 3 & 1 & 0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0 & 1 & 3 & 3 & 1 & 0 & \tikzmark{right}{0} \Highlight[firsta0]{highlight0}\\ 
+0 & 0 & 0 & 0 & 0 & 0 & 1 & 3 & 2 & 0\\ 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 2 & 4\\ 
+\end{smallmatrix} \right] \\
+M^{1,1} &= && \left[\begin{smallmatrix} %
+1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+0  & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0\\ 
+\tikzmark{left}{0} & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & \tikzmark{right}{0} \Highlight[firsta1]{highlight1}\\ 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0\\ 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1
+\end{smallmatrix}\right]\\
+\end{align*}%
+\end{minipage}%
+%
+%
+%
+\begin{minipage}[t]{0.5\textwidth}
+	\vspace*{1.8cm}
+\begin{align*}
+\tensor{ML}^1 &= \frac{1}{4} \left[\begin{smallmatrix} %
+\tikzmark{left}{4} & 2 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 2 & 3 & 1 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 0 & 1 & 3 & 3 & 1 & 0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0 & 1 & 3 & 3 & 1 & 0 & \tikzmark{right}{0} \Highlight[seconda0]{highlight0}\\ 
+\tikzmark{left}{0} & 0 & 0 & 0 & 0 & 0 & 4 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 4 & 0 & \tikzmark{right}{0} \Highlight[seconda1]{highlight1}\\ 
+\end{smallmatrix}\right] 
+\end{align*}
+\end{minipage}
+%
+\tikz[overlay, remember picture] {
+	\draw[->,thick,red,dashed] (firsta0) -- (seconda0) node [pos=0.66,above] {};
+	\draw[->,thick,red,dashed] (firsta1ne) -- (seconda1sw) node [pos=0.66,above] {};
+	% 	
+	\draw [decorate,decoration={brace,amplitude=2pt,raise=6pt},yshift=0pt]
+	(seconda0ne) -- (seconda0se) node [black,midway,xshift=0.5cm] {\scriptsize $\mathcal{B}^0$}; 
+	\draw [decorate,decoration={brace,amplitude=1.2pt,raise=6pt},yshift=0pt]
+	(seconda1ne) -- (seconda1se) node [black,midway,xshift=0.5cm] {\scriptsize $\mathcal{B}^1$};
+	%
+	\draw [decorate,decoration={brace,amplitude=2pt,mirror,raise=6pt},yshift=0pt]
+	(seconda1sw) -- (seconda1se) node [black,midway,yshift=-0.5cm] {\scriptsize $\mathcal{B}^1$};
+}
+%\end{tikzpicture}
+%\tikzexternalenable

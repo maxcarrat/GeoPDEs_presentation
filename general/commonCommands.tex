@@ -1,0 +1,154 @@
+\newcommand{\hpd}[0]{\mbox{$hp$-$d$}\xspace}
+
+\newcommand{\refSection}[1]{Section~\ref{#1}}
+\newcommand{\refAlgorithm}[1]{Algorithm~\ref{#1}}
+\newcommand{\refFigure}[1]{Figure~\ref{#1}}
+\newcommand{\refTable}[1]{Table~\ref{#1}}
+\newcommand{\refEquation}[1]{(\ref{#1})}
+
+\newcommand{\redPart}[1]{\color{red}#1\color{black}}
+
+\newcommand{\etal}{~\textit{et al.}\xspace}
+
+\newcommand{\tensor}[1]{\boldsymbol{{#1}}}
+\newcommand{\trans}{^{\top}}
+\newcommand{\integral}[3]{\int\limits_{#1} #2 \, \mathrm{d}#3}
+
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{R}[1]{>{\raggedright\arraybackslash}m{#1}}
+\newcolumntype{L}[1]{>{\raggedleft\arraybackslash}m{#1}}
+
+\newcommand\restr[2]{{% we make the whole thing an ordinary symbol
+		\left.\kern-\nulldelimiterspace % automatically resize the bar with \right
+		#1 % the function
+		%\vphantom{\big|} % pretend it's a little taller at normal size
+		\right|_{#2} % this is the delimiter
+}}
+%\newcommand{\revOne}[1]{#1\xspace}
+%\newcommand{\revTwo}[1]{#1\xspace}
+%\newcommand{\revBoth}[1]{#1\xspace}
+%\newcommand{\delete}[1]{\xspace}
+
+\newcommand{\includeTikzFile}[3]{
+  file = #1\\
+  width = #2
+
+  \renewcommand{\figFilename}{#1}
+  \tikzpicturedependsonfile{\figFilename.tikz}
+  \tikzsetnextfilename{\figFilename}
+  \includegraphics[width = #2, 
+                   height = #3]
+                   {\figFilename.tikz}%
+}
+
+\newcommand{\Bezier}{B\'ezier}
+\newcommand\compactDots{\ifmmode\ldots\else\makebox[10cm][c]{.\hfil.\hfil.}\fi}
+\newcommand{\onTop}[2]{\stackrel{\mathclap{#1}}{#2}}
+
+\newcommand{\supp}[1]{\textnormal{supp}(#1)}
+\newcommand{\glob}{glob}
+\newcommand{\loc}{loc}
+
+\makeatletter
+\def\namedlabel#1#2{\begingroup
+	\def\@currentlabel{#2}%
+	\label{#1}\endgroup
+}
+\makeatother
+
+\makeatletter
+\renewcommand{\todo}[2][]{\tikzexternaldisable\@todo[#1]{#2}\tikzexternalenable}
+\makeatother
+
+\usepackage{etoolbox}
+\AtBeginEnvironment{mysmallmatrix}{%
+\setstretch{0.9}%
+\setlength{\arraycolsep}{2pt}%
+}%
+
+\renewcommand\arraystretch{1.2}
+\newenvironment{mysmallmatrix}%
+{%
+	%\arraycolsep=3pt%
+%	\small%
+	\begin{matrix}%
+}%
+	{\end{matrix}}%
+
+\newenvironment{myverysmallmatrix}%
+{%
+	%\arraycolsep=3pt%
+	%	\small%
+	\begin{matrix}%
+	}%
+	{\end{matrix}}%
+\AtBeginEnvironment{myverysmallmatrix}{%
+	\footnotesize%
+	\setstretch{0.55}%
+	\setlength{\arraycolsep}{1.5pt}%
+}%
+
+\newcommand{\overbar}[1]{\mkern 0.1mu\overline{\mkern-0.1mu#1\mkern-0.1mu}\mkern 0.1mu}
+\setcounter{MaxMatrixCols}{30}
+
+%\newtheorem{definition}{Definition}[section]
+
+\makeatletter
+\def\bbordermatrix#1{\begingroup \m@th
+	\@tempdima 4.75\p@
+	\setbox\z@\vbox{%
+		\def\cr{\crcr\noalign{\kern2\p@\global\let\cr\endline}}%
+		\ialign{$##$\hfil\kern2\p@\kern\@tempdima&\thinspace\hfil$##$\hfil
+			&&\quad\hfil$##$\hfil\crcr
+			\omit\strut\hfil\crcr\noalign{\kern-\baselineskip}%
+			#1\crcr\omit\strut\cr}}%
+	\setbox\tw@\vbox{\unvcopy\z@\global\setbox\@ne\lastbox}%
+	\setbox\tw@\hbox{\unhbox\@ne\unskip\global\setbox\@ne\lastbox}%
+	\setbox\tw@\hbox{$\kern\wd\@ne\kern-\@tempdima\left[\kern-\wd\@ne
+		\global\setbox\@ne\vbox{\box\@ne\kern2\p@}%
+		\vcenter{\kern-\ht\@ne\unvbox\z@\kern-\baselineskip}\,\right]$}%
+	\null\;\vbox{\kern\ht\@ne\box\tw@}\endgroup}
+\makeatother
+
+\tikzset{
+	invisible/.style={opacity=0},
+	visible on/.style={alt={#1{}{invisible}}},
+	alt/.code args={<#1>#2#3}{%
+		\alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} % \pgfkeysalso doesn't change the path
+	},
+}
+
+\newcommand{\mytikzmark}[2]{%
+	\tikz[overlay, remember picture, anchor=base, baseline=(#1.base), font=\tiny]%
+	\node (#1) {#2};%
+	%\tikzmark{#1}#2%
+}%
+
+\tikzset{%
+	highlight0/.style={rectangle,fill=black!15,draw,
+		fill opacity=1,draw opacity=0.2,inner sep=-2.2pt}
+}%
+\tikzset{%
+	highlight1/.style={rectangle,fill=blue!15,draw,
+		fill opacity=1,draw opacity=0.2,thin,inner sep=-2.2pt}
+}%
+\tikzset{%
+	highlight2/.style={rectangle,fill=orange!15,draw,
+		fill opacity=1,draw opacity=0.2,thin,inner sep=-2.2pt}
+}%
+
+\newcommand{\Highlight}[4][submatrix]{%
+	%\tikz[overlay, remember picture]{
+	\node[#2,fit=(#3.north west) (#4.south east)] (#1) {};%
+	%}
+}%
+\newcommand{\AdjustRight}[2]{%
+	%\tikz[overlay, remember picture, inner sep=0pt]{%
+	\node[overlay, remember picture, inner sep=0pt] (#1adj) at (#2.east |- #1.south) {};%
+	%}%
+}%
+\newcommand{\AdjustLeft}[2]{%
+	%\tikz[overlay, remember picture, inner sep=0pt]{%
+	\node[overlay, remember picture, inner sep=0pt] (#1adj) at (#2.west |- #1.north) {};%
+	%}%
+}%

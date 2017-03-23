@@ -1,0 +1,103 @@
+\usepackage{etex}
+\usepackage{color} 
+\usepackage{pgfplots}
+\usepackage{psfrag} 
+\usepackage{subcaption}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{graphicx}
+%\usepackage{pstool} 
+%\usepackage[on]{auto-pst-pdf}     
+\usepackage{todonotes}
+\usepackage{amsfonts}  
+%\usepackage{adjustbox}    
+%\usepackage{mathtools}
+%\usepackage[table]{xcolor}
+\usepackage{xcolor}        
+%\usepackage{blkarray}        
+
+%\usepackage[square, authoryear]{natbib}
+%\usepackage[square,sort&compress,comma,numbers]{natbib}
+ 
+\usepackage{pgfplotstable}
+\usetikzlibrary{pgfplots.groupplots}
+\usetikzlibrary{fit}
+\usepackage{filecontents}
+\usepackage{tikz-3dplot}
+
+\usepgfplotslibrary{patchplots}
+
+\usepackage{tikz}
+\usepackage{tikzscale}
+
+\usetikzlibrary{arrows,3d}
+
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{positioning}
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.pathreplacing} % for expanding waves
+\usetikzlibrary{decorations.markings}
+
+
+\usetikzlibrary{spy}
+\usetikzlibrary{snakes,shapes}    
+\usetikzlibrary{spy}
+\usetikzlibrary{backgrounds,tikzmark}  
+\usetikzlibrary{decorations}
+\usetikzlibrary{positioning}
+\usetikzlibrary{patterns}
+\usetikzlibrary{calc} 
+
+\usepackage{booktabs}   
+\usepackage{makecell} 
+\usepackage{colortbl}   
+
+\usepackage{xspace}
+\usepackage{color}     
+\usepackage{setspace}   
+ 
+\usepackage{soul}
+\usepackage{ulem}
+\usepackage{currfile}
+\usepackage{import}
+
+\usepackage{authoraftertitle} % used for getting the authors 
+\usepackage{authblk} % used for affiliations 
+\renewcommand\Affilfont{\fontsize{9}{10.8}\selectfont}
+
+\usepackage[noabbrev]{cleveref}
+
+%\usepackage{enumitem}
+%\setlist{noitemsep,topsep=2pt,parsep=0pt,partopsep=0pt}
+
+\usepackage{multicol} 
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{algorithmicx}
+%\usepackage{algcompatible}
+
+\usepackage{environ}% http://ctan.org/pkg/environ
+
+%    \setlength{\abovecaptionskip}{1.3pt}
+%    \setlength{\belowcaptionskip}{1.3pt}
+    
+    \usepackage{framed}
+    
+    %\usepgfplotslibrary{external} 
+    %\tikzexternalize
+    %\tikzsetexternalprefix{figureCache/}
+    %\tikzexternalize[mode=list and make]
+    
+    
+    
+    \usepgfplotslibrary{external} 
+    \tikzexternalize[prefix=externalFiles/] % To activate the
+    %%\tikzset{external/force remake}
+    
+%    \drawboundingboxtrue
+    %\drawboundingboxfalse 
+   % \usepackage{showframe}
+   
+   \pgfdeclarelayer{background}
+   \pgfdeclarelayer{foreground}
+   \pgfsetlayers{background,main,foreground}

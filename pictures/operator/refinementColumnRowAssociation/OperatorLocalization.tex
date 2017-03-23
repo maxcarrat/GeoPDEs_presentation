@@ -1,0 +1,92 @@
+% !TeX root = ../../../main.tex
+\tikzexternaldisable%
+
+\tikzset{%
+	highlight0/.style={rectangle,rounded corners,fill=black!15,draw,
+		fill opacity=0.2,thin,opacity=0.4,inner sep=0.6pt}
+}%
+\tikzset{%
+	highlight1/.style={rectangle,rounded corners,fill=blue!15,draw,
+		fill opacity=0.2,opacity=0.4,thin,inner sep=0.6pt}
+}%
+\tikzset{%
+	highlight2/.style={rectangle,rounded corners,fill=orange!15,draw,
+		fill opacity=0.2,opacity=0.4,thin,inner sep=0.6pt}
+}%
+\newcommand{\mytikzmarkt}[2]{%
+	\tikz[overlay, inner sep=1pt, remember picture, anchor=base, baseline=(#1.base)]%
+	\node (#1) {$#2$};}%
+%%
+%\newcommand{\Highlight}[4][submatrix]{%
+%	\tikz[overlay, remember picture]{
+%		\node[#2,fit=(#3.north west) (#4.south east)] (#1) {}; }
+%}%
+%\newcommand{\AdjustRight}[2]{%
+%	\tikz[overlay, remember picture]{%
+%		\node (#1adj) at (#2.east |- #1.south east) {};%
+%	}%
+%}%
+%\newcommand{\AdjustLeft}[2]{%
+%	\tikz[overlay, remember picture]{%
+%		\node (#1adj) at (#2.north west |- #1.north west) {};%
+%	}%
+%}%
+
+%\hspace{-0.55cm}
+\begin{tikzpicture}
+\normalsize
+\node[remember picture] at (0,0){%
+	$%
+	\left[\begin{mysmallmatrix} %
+		\mytikzmarkt{left0E0}{b^0_0}\\\mytikzmarkt{left0E1}{b^0_1}\\\mytikzmarkt{right0E0}{b^0_2}\\\mytikzmarkt{right0E1}{b^0_3}\\b^0_4\\b^0_5
+	\end{mysmallmatrix} \right]%
+	= \frac{1}{4} \left[\begin{myverysmallmatrix} %
+	\mytikzmarkt{leftE0}{4} & \mytikzmarkt{leftE1}{2} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+	0 & 2 & \mytikzmarkt{leftE2}{3} & \mytikzmarkt{leftE3}{1} & 0 & 0 & 0 & 0 & 0 & 0\\ 
+	0 & 0 & \mytikzmarkt{rightE0}{1} &  \mytikzmarkt{rightE1}{3} & 3 & 1 & 0 & 0 & 0 & 0\\ 
+	0 & 0 & 0 & 0 & \mytikzmarkt{rightE2}{1} & \mytikzmarkt{rightE3}{3} & 3 & 1 & 0 & 0\\ 
+	0 & 0 & 0 & 0 & 0 & 0 & 1 & 3 & 2 & 0\\ 
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 2 & 4\\ 
+	\end{myverysmallmatrix} \right]
+	\cdot%
+	\left[\begin{mysmallmatrix} %
+	\mytikzmarkt{left1E0}{b^1_0}\\\mytikzmarkt{left1E1}{b^1_1}\\\mytikzmarkt{right1E0}{b^1_2}\\\mytikzmarkt{right1E1}{b^1_3}\\\mytikzmarkt{right1E2}{b^1_4}\\\mytikzmarkt{right1E3}{b^1_5}\\b^1_6\\b^1_7\\b^1_8\\b^1_9
+	\end{mysmallmatrix} \right]%
+	$%
+};%
+%
+\end{tikzpicture}
+
+\tikz[overlay, remember picture] {%
+	\only<2>{
+		\node[fit={(leftE0) (rightE0)}, inner sep=0pt, draw=gray, fill=gray,fill 
+		opacity=0.2, rectangle,  thick] () {};
+		\node[fit={(left1E0) (right1E0)}, inner sep=0pt, draw=gray, fill=gray,fill 
+		opacity=0.2, rectangle,  thick] () {};
+		\node[fit={(left0E0) (right0E0)}, inner sep=0pt, draw=gray, fill=gray,fill 
+		opacity=0.2, rectangle,  thick] () {};
+		}
+	\only<3>{
+		\node[fit={(leftE1) (rightE1)}, inner sep=0pt, draw=gray, fill=gray,fill opacity=0.2, rectangle,  thick] () {};
+		\node[fit={(left1E1) (right1E1)}, inner sep=0pt, draw=gray, fill=gray,fill 
+		opacity=0.2, rectangle,  thick] () {};
+		\node[fit={(left0E0) (right0E0)}, inner sep=0pt, draw=gray, fill=gray,fill 
+		opacity=0.2, rectangle,  thick] () {};
+		}
+	\only<4>{
+				\node[fit={(leftE2) (rightE2)}, inner sep=0pt, draw=gray, fill=gray,fill opacity=0.2, rectangle,  thick] () {};
+				\node[fit={(right1E0) (right1E2)}, inner sep=0pt, draw=gray, fill=gray,fill 
+				opacity=0.2, rectangle,  thick] () {};
+				\node[fit={(left0E1) (right0E1)}, inner sep=0pt, draw=gray, fill=gray,fill 
+				opacity=0.2, rectangle,  thick] () {};
+			}
+				\only<5>{
+					\node[fit={(leftE3) (rightE3)}, inner sep=0pt, draw=gray, fill=gray,fill opacity=0.2, rectangle,  thick] () {};
+					\node[fit={(right1E1) (right1E3)}, inner sep=0pt, draw=gray, fill=gray,fill 
+					opacity=0.2, rectangle,  thick] () {};
+					\node[fit={(left0E1) (right0E1)}, inner sep=0pt, draw=gray, fill=gray,fill 
+					opacity=0.2, rectangle,  thick] () {};
+				}
+}%
+
+\tikzexternalenable

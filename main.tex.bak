@@ -1,0 +1,482 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass{beamer}
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+%\usepackage{biblatex}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[]{Travelling Heat Source Simulations using B{\'e}zier Projection} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author{Massimo Carraturo} % Your name
+\institute[University of Pavia] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{ \\ % Your institution for the title page
+\medskip
+\textit{massimo.carraturo01@universitadipavia.it} % Your email address
+}
+\date{\today} % Date, can be changed to a custom date
+
+\input{general/packages}
+\input{general/pgfplotsettings}
+\input{general/commonCommands}
+
+%\bibliography{library.bib}
+\begin{document}
+
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+\begin{frame}
+\frametitle{Overview} % Table of contents slide, comment this block out to remove it
+\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+%
+%------------------------------------------------
+
+\begin{frame}
+	\frametitle{Multi-Level Isogeometric Analysis}
+	\centering
+	\input{pictures/basis/multiLevelBasis1D.tikz}
+\end{frame}
+
+%\begin{frame}
+%	\frametitle{Multi-Level Isogeometric Analysis}
+%	\centering
+%	\input{pictures/basis/multiLevelBasis1D.elemhighlight.tikz}
+%\end{frame}
+%
+%\begin{frame}
+%	\frametitle{Multi-Level Isogeometric Analysis}
+%	\centering
+%	\input{pictures/basis/multiLevelBasis1DElements.tikz}
+%\end{frame}
+%
+%\begin{frame}
+%	\frametitle{Multi-Level Isogeometric Analysis}
+%	\centering
+%	\input{pictures/basis/multiLevelBasis1DElements.hb.tikz}
+%\end{frame}
+%
+%\begin{frame}
+%	\frametitle{Multi-Level Isogeometric Analysis}
+%	\centering
+%	\input{pictures/basis/multiLevelBasis1DElements.hb.elemhighlight.tikz}
+%\end{frame}
+%
+%\begin{frame}
+%	\frametitle{Multi-Level Extraction: Basic Idea}
+%	\centering
+%	\input{pictures/basis/elementBasis/elementLBToMLB.tex}%
+%\end{frame}
+%
+%\begin{frame}
+%	\frametitle{Multi-Level Extraction: Basic Idea}
+%	\centering
+%	\input{pictures/basis/flathierarchy/flathierarchy.tex}
+%\end{frame}
+%
+%\begin{frame}
+%	\frametitle{Multi-Level Extraction: Basic Idea}
+%	\centering
+%	\input{pictures/basis/flathierarchy/flathierarchy.bezier.tex}
+%\end{frame}
+%
+%\begin{frame}
+%	\frametitle{Multi-Level Extraction: Advantages}
+%	Advantages:
+%	\begin{itemize}
+%		\item Total element point of view by:
+%		\begin{itemize}
+%			\item flattening the multi-level hierarchy,
+%			\item easing the implementation in existing FE codes.
+%		\end{itemize}
+%		\item It generalizes the \Bezier\ extraction.
+%		\item Once computed, it removes the need to navigate through the levels.
+%		\item Once computed, it removes concatenation of mappings:
+%		\begin{itemize}
+%			\item just one direct mapping from element to physical space,
+%			\item no coordinate conversion,
+%			\item important for evaluating derivatives.
+%		\end{itemize}
+%		\item It eases local evaluation of the solution field and its derivatives.
+%		\item This approach is valid for every overlay of nested spaces.
+%		\item It eases domain distribution in parallel codes, since it encodes local information about each element individually.
+%	\end{itemize}
+%\end{frame}
+%
+%
+%\begin{frame}
+%	\frametitle{Multi-Level Extraction: Existence}
+%	The multi-level operator exists for every overlay of nested spaces:
+%	\begin{itemize}
+%		\item A linear combination of finer basis functions can represent every coarser function.
+%		\item The multi-level operator represents locally this operation.
+%	\end{itemize}
+%	
+%	{
+%		\centering
+%		\resizebox{0.8\linewidth}{5cm}{%
+%			\input{pictures/basis/multiLevelBasis1D.tikz}%
+%		}%
+%	}
+%\end{frame}
+%
+%\begin{frame}
+%	\frametitle{Multi-Level Extraction: Existence}	
+%		\centering
+%		\resizebox{0.8\linewidth}{3cm}{%
+%			\input{pictures/basis/multiLevelBasis1D.1lev.tikz}%
+%		}\vspace{-8pt}
+%		\input{pictures/operator/refinementColumnRowAssociation/OperatorLocalization.tex}%
+%\end{frame}
+%
+%\begin{frame}
+%	\frametitle{Multi-Level Extraction: Algorithms}
+%
+%	\begin{itemize}
+%		\item We seek the operator $ \tensor{R}^{0,1} $ to transform from  $ \tensor{b}^0 $ to $ \tensor{b}^1 $ 
+%		\[\tensor{b}^0 = \tensor{R}^{0,1} \cdot \tensor{b}^1 \]
+%		\item Given a spline  $ f(x) = (\tensor{b}^0)^{\trans} \cdot \tensor{P}^0 = (\tensor{b}^1)^{\trans} \cdot \tensor{P}^1 $, $ \tensor{R}^{0,1} $  satisfies
+%		\[\tensor{P}^1 = (\tensor{R}^{0,1})^{\trans} \cdot \tensor{P}^0 \] 
+%		\item Namely, $ \tensor{R}^{0,1} $ transforms also control points 
+%		\item Knot insertion algorithms can be used to compute $ \tensor{R}^{0,1} $
+%	\end{itemize}
+%	
+%\end{frame}
+%	
+%
+%\begin{frame}
+%	\frametitle{Multi-Level Extraction: Algorithms}
+%	
+%	\begin{itemize}
+%		\item The Boehm's method inserts one knot at a time
+%	\end{itemize}
+%	{
+%		\centering
+%		\input{pictures/algo/boehm1.tex}%
+%	}%
+%\end{frame}
+%
+%\begin{frame}[noframenumbering]
+%	\frametitle{Multi-Level Extraction: Algorithms}
+%	
+%	\begin{itemize}
+%		\item The Boehm's method inserts one knot at a time
+%	\end{itemize}
+%	{
+%		\centering
+%		\input{pictures/algo/boehm2.tex}%
+%	}%
+%\end{frame}
+%\begin{frame}[noframenumbering]
+%	\frametitle{Multi-Level Extraction: Algorithms}
+%	
+%	\begin{itemize}
+%		\item The Boehm's method inserts one knot at a time
+%	\end{itemize}
+%	{
+%		\centering
+%		\input{pictures/algo/boehm3.tex}%
+%	}%
+%\end{frame}
+%\begin{frame}[noframenumbering]
+%	\frametitle{Multi-Level Extraction: Algorithms}
+%	
+%	\begin{itemize}
+%		\item The Boehm's method inserts one knot at a time
+%	\end{itemize}
+%	{
+%		\centering
+%		\input{pictures/algo/boehm4.tex}%
+%	}%
+%\end{frame}
+%\begin{frame}[noframenumbering]
+%	\frametitle{Multi-Level Extraction: Algorithms}
+%	
+%	\begin{itemize}
+%		\item The Boehm's method inserts one knot at a time
+%	\end{itemize}
+%	{
+%		\centering
+%		\input{pictures/algo/boehm5.tex}%
+%	}%
+%\end{frame}
+%
+%\begin{frame}
+%	\frametitle{Multi-Level Extraction: Algorithms}
+%	
+%	\begin{itemize}
+%		\item The Boehm's algorithm can easily produce the global knot insertion operator.
+%		\[\Xi^0 = [-1, -1, -1, 0, 0.5 ,1, 1, 1]\]
+%		\[\Xi^1 = [-1, -1 ,-1, \color{red}-0.5  \color{black}, 0,  \color{red}0.25  \color{black} ,0.5, 1, 1, 1]\]
+%	\end{itemize}
+%		\only<1>{\input{pictures/localoperators/local-1.glob.tex}}
+%		\only<2>{\input{pictures/localoperators/local0.glob.tex}}
+%		\only<3>{\input{pictures/localoperators/local1.glob.tex}}
+%		\only<4>{\input{pictures/localoperators/local2.glob.tex}}
+%		\only<5>{\input{pictures/localoperators/local3.glob.tex}}
+%		\only<6>{\input{pictures/localoperators/local4.glob.tex}}
+%\end{frame}
+%
+%\begin{frame}
+%	\frametitle{Multi-Level Extraction: Algorithms}
+%	
+%	\begin{itemize}
+%		\item The Boehm's algorithm algorithm can easily produce the global knot insertion operator.
+%		\item Additional care is required for producing the local operators.
+%		\[\Xi^0 = [-1, -1, -1, 0, 0.5 ,1, 1, 1]\]
+%		\[\Xi^1 = [-1, -1 ,-1, \color{red}-0.5  \color{black}, 0,  \color{red}0.25  \color{black} ,0.5, 1, 1, 1]\]
+%	\end{itemize}
+%	\only<1>{\input{pictures/localoperators/local-1.tex}}
+%	\only<2>{\input{pictures/localoperators/local0.tex}}
+%	\only<3>{\input{pictures/localoperators/local1.tex}}
+%	\only<4>{\input{pictures/localoperators/local2.tex}}
+%	\only<5>{\input{pictures/localoperators/local3.tex}}
+%	\only<6>{\input{pictures/localoperators/local4.tex}}
+%\end{frame}
+%
+%\begin{frame}
+%	\frametitle{Multi-Level Extraction: Algorithms}
+%	
+%	\begin{itemize}
+%		\item The Boehm's algorithm algorithm can easily produce the global knot insertion operator.
+%		\item Additional care is required for producing the local operators.
+%		\[\Xi^0 = [-1, -1, -1, 0, 0.5 ,1, 1, 1]\]
+%		\[\Xi^1 = [-1, -1 ,-1, \color{red}-0.5, -0.5  \color{black}, 0,  \color{red}0.25  \color{black} ,0.5, 1, 1, 1]\]
+%	\end{itemize}
+%	\only<1>{\input{pictures/localoperators/local-1.mult.tex}}
+%	\only<2>{\input{pictures/localoperators/local0.mult.tex}}
+%	\only<3>{\input{pictures/localoperators/local1.mult.tex}}
+%	\only<4>{\input{pictures/localoperators/local2.mult.tex}}
+%	\only<5>{\input{pictures/localoperators/local3.mult.tex}}
+%	\only<6>{\input{pictures/localoperators/local4.mult.tex}}
+%\end{frame}
+%
+%\begin{frame}
+%	\frametitle{Multi-Level Extraction: Algorithms}
+%	
+%	\begin{itemize}
+%		\item The Oslo algorithm is similar to the Boehm's method.S
+%		\item It proceeds columnwise.
+%		\[\Xi^0 = [-1, -1, -1, 0, 0.5 ,1, 1, 1]\]
+%		\[\Xi^1 = [-1, -1 ,-1, \color{red}-0.5, -0.5  \color{black}, 0,  \color{red}0.25  \color{black} ,0.5, 1, 1, 1]\]
+%	\end{itemize}
+%\only<1>{\input{pictures/localoperators/oslo/local-1.tex}}
+%\only<2>{\input{pictures/localoperators/oslo/local0.tex}}
+%\only<3>{\input{pictures/localoperators/oslo/local1.tex}}
+%\only<4>{\input{pictures/localoperators/oslo/local2.tex}}
+%\only<5>{\input{pictures/localoperators/oslo/local3.tex}}
+%\only<6>{\input{pictures/localoperators/oslo/local4.tex}}
+%\only<7>{\input{pictures/localoperators/oslo/local5.tex}}
+%\only<8>{\input{pictures/localoperators/oslo/local6.tex}}
+%\end{frame}
+%
+%\begin{frame}
+%	\frametitle{Multi-Level Extraction: Algorithms}
+%	\begin{itemize}
+%		\item Both algorithms use linear operations.
+%		\item The Boehm's algorithm 
+%		\begin{itemize}
+%			\item is numerically more stable (convex combinations),
+%			\item is harder to parallelize.
+%		\end{itemize}
+%		\item The Oslo algorithm
+%		\begin{itemize}
+%			\item is easy to parallelize,
+%			\item easier to program.
+%		\end{itemize}
+%		\item The Boehm's algorithm is the best algorithm for computing the new control points after knot insertion.
+%		\item However, this is not necessarily true for generating the knot insertion operator.
+%	\end{itemize}
+%\end{frame}
+%
+%
+%\begin{frame}
+%	\frametitle{Multi-Level Extraction: Algorithms Comparison}
+%		\begin{itemize}
+%		\item $ p=3 $
+%		\item Knot vector $ [-1, -0.8, 0.3, 1] $ bisected 11 times
+%		\item Parallel Oslo executed on 4 processors
+%	\end{itemize}
+%\begin{figure}[t]
+%	\centering
+%	\begin{subfigure}[t]{.5\textwidth}
+%		\centering
+%		\input{pictures/algo/algocmp.tex}
+%	\end{subfigure}%
+%	\begin{subfigure}[b]{.5\textwidth}
+%		\centering
+%		\input{pictures/algo/algocmp.loglog.tex}
+%	\end{subfigure}
+%\end{figure}
+%	\begin{figure}[b]
+%		\centering
+%	\begin{minipage}[b]{0.4\textwidth}
+%			\vspace{0pt}%
+%		\input{pictures/algo/algocmp.tex}%		
+%	\end{minipage}
+%\hspace{1cm}
+%	\begin{minipage}[b]{0.4\textwidth}
+%		\vspace{0pt}%
+%		\input{pictures/algo/algocmp.loglog.tex}%
+%	\end{minipage}
+%	\end{figure}
+%\end{frame}
+%
+%\begin{frame}
+%	\frametitle{Multi-Level Extraction: Algorithms Comparison}
+%	\begin{itemize}
+%		\item $ p=3 $
+%		\item Knot vector $ [-1, -0.8, 0.3, 1] $ bisected 11 times
+%		\item Parallel Oslo executed on 4 processors
+%	\end{itemize}
+%	\begin{figure}[t]
+%		\centering
+%		\begin{subfigure}[t]{.5\textwidth}
+%			\centering
+%			\input{pictures/algo/algocmp.prop.serial.tex}
+%		\end{subfigure}%
+%		\begin{subfigure}[b]{.5\textwidth}
+%			\centering
+%			\input{pictures/algo/algocmp.prop.tex}
+%		\end{subfigure}
+%	\end{figure}
+%\end{frame}
+%
+%
+%\begin{frame}
+%	\frametitle{Multi-Level Extraction: Algorithms}
+%	
+%	\begin{itemize}
+%		\item The multi-level operators is obtained by combining rows of the standard operators
+%	\end{itemize}
+%		\only<1>{		\input{pictures/basis/multiLevelBasis1D.tikz}}%
+%	\only<2>{\input{pictures/algo/ml/multiLevelBasis1D.std.0.tikz}}
+%	\only<3>{\input{pictures/algo/ml/multiLevelBasis1D.std.1.tikz}}
+%	\only<4>{\input{pictures/algo/ml/multiLevelBasis1D.std.2.tikz}}
+%	\only<5>{\input{pictures/algo/ml/multiLevelBasis1D.std.3.tikz}}
+%	\only<6>{\input{pictures/algo/ml/multiLevelBasis1D.std.4.tikz}}
+%	\only<7>{\input{pictures/algo/ml/multiLevelBasis1D.std.5.tikz}}
+%		\only<8>{\input{pictures/algo/ml/multiLevelBasis1D.std.6.tikz}}
+%				\only<9>{\input{pictures/algo/ml/multiLevelBasis1D.std.7.tikz}}
+%	
+%	%\only<4>{\input{pictures/algo/ml/multiLevelBasis1D.ml.0.tikz}}
+%	\only<5>{\input{pictures/localoperators/oslo/local3.tex}}
+%	\only<6>{\input{pictures/localoperators/oslo/local4.tex}}
+%	\only<7>{\input{pictures/localoperators/oslo/local5.tex}}
+%	\only<8>{\input{pictures/localoperators/oslo/local6.tex}}
+%\end{frame}
+%
+%
+%\begin{frame}
+%	\frametitle{Multi-Level Extraction: Algorithms}
+%	
+%	\begin{itemize}
+%		\item The multi-level operators is obtained by combining rows of the standard operators
+%	\end{itemize}	
+%	\only<1>{		\input{pictures/basis/multiLevelBasis1D.tikz}}%
+%\only<2>{\input{pictures/algo/ml/multiLevelBasis1D.ml.0.tikz}}
+%\only<3>{\input{pictures/algo/ml/multiLevelBasis1D.ml.1.tikz}}
+%\only<4>{\input{pictures/algo/ml/multiLevelBasis1D.ml.2.tikz}}
+%\only<5>{\input{pictures/algo/ml/multiLevelBasis1D.ml.3.tikz}}
+%\only<6>{\input{pictures/algo/ml/multiLevelBasis1D.ml.4.tikz}}
+%\only<7>{\input{pictures/algo/ml/multiLevelBasis1D.ml.5.tikz}}
+%		\only<5>{\input{pictures/localoperators/oslo/local3.tex}}
+%		\only<6>{\input{pictures/localoperators/oslo/local4.tex}}
+%		\only<7>{\input{pictures/localoperators/oslo/local5.tex}}
+%		\only<8>{\input{pictures/localoperators/oslo/local6.tex}}
+%\end{frame}
+%
+%
+%------------------------------------------------
+%
+%%\begin{frame}
+%\Huge{\centerline{The End}}
+%\end{frame}
+%
+%%----------------------------------------------------------------------------------------
+
+\end{document} 

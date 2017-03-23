@@ -1,0 +1,70 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=4cm,
+height=4cm,
+scale only axis,
+xminorticks=true,
+xmin=0,
+xmax=3500,
+ymin=0,
+ymax=14,
+yminorticks=true,
+ytick={0,4,8,14},
+axis background/.style={fill=white},
+ylabel=$ \frac{\text{Nr. Ops.}}{\text{Nr. Ops. Parallel Oslo}} $,
+xlabel=Number of Added Knots,
+legend style={font=\tiny},
+legend pos=north west
+]%
+\addplot [color=blue, mark=o, mark options={solid, blue}]
+  table[row sep=crcr]{%
+3	1.2\\
+9	3\\
+21	4.66666666666667\\
+45	6\\
+93	6.88888888888889\\
+189	7.41176470588235\\
+381	7.6969696969697\\
+765	7.84615384615385\\
+1533	7.92248062015504\\
+3069	7.96108949416342\\
+};
+
+\addplot [color=red, mark=o, mark options={solid, red}]
+  table[row sep=crcr]{%
+3	4.2\\
+9	7\\
+21	9.33333333333333\\
+45	11.2\\
+93	12.4444444444444\\
+189	13.1764705882353\\
+381	13.5757575757576\\
+765	13.7846153846154\\
+1533	13.8914728682171\\
+3069	13.9455252918288\\
+};
+
+\addplot [color=black, mark=diamond, mark options={solid, black}]
+  table[row sep=crcr]{%
+3	1.8\\
+9	2.5\\
+21	3\\
+45	3.4\\
+93	3.66666666666667\\
+189	3.82352941176471\\
+381	3.90909090909091\\
+765	3.95384615384615\\
+1533	3.97674418604651\\
+3069	3.98832684824903\\
+};
+\addlegendentry{$\text{oslo}_\text{l}\text{ocal}$}
+\legend{Boehm, Bs2bs, Oslo}
+\end{axis}
+\end{tikzpicture}%

@@ -1,0 +1,49 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=4.602in,
+height=3.82in,
+at={(0.772in,0.516in)},
+scale only axis,
+xmode=log,
+xmin=10,
+xmax=100000,
+xminorticks=true,
+ymode=log,
+ymin=1e-05,
+ymax=1,
+yminorticks=true,
+axis background/.style={fill=white},
+title style={font=\bfseries},
+title={Energy Error}
+]
+\addplot [color=blue,solid,mark=o,mark options={solid},forget plot]
+  table[row sep=crcr]{%
+32	0.0775733997153071\\
+72	0.0490064870937278\\
+200	0.0250191595998394\\
+648	0.00930839144688669\\
+2312	0.00265449572239802\\
+8712	0.000674314096320214\\
+27820	0.000167882181944559\\
+93912	4.18660647265124e-05\\
+};
+\addplot [color=black,dashed,forget plot]
+  table[row sep=crcr]{%
+32	0.242614486638552\\
+72	0.0970399320582636\\
+200	0.0305894951657729\\
+648	0.00810319794757004\\
+2312	0.00192499655728905\\
+8712	0.000429935211734936\\
+27820	0.000115774430343013\\
+93912	2.92793461111224e-05\\
+};
+\end{axis}
+\end{tikzpicture}%

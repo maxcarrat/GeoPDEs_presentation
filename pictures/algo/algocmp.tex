@@ -1,0 +1,77 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\begin{tikzpicture}%
+\begin{axis}[%
+width=4cm,
+height=4cm,
+scale only axis,
+xmin=0,
+xmax=3100,
+xminorticks=true,
+ymin=10,
+ymax=150000,
+yminorticks=true,
+axis background/.style={fill=white},
+ylabel=Number of Linear Operations,
+xlabel=Number of Added Knots,
+legend style={font=\tiny}
+]%
+\addplot [color=blue, mark=o, mark options={solid, blue}]
+  table[row sep=crcr]{%
+3	72\\
+9	216\\
+21	504\\
+45	1080\\
+93	2232\\
+189	4536\\
+381	9144\\
+765	18360\\
+1533	36792\\
+3069	73656\\
+};
+\addplot [color=red, dashed, mark=o, mark options={solid, red}]
+  table[row sep=crcr]{%
+3	252\\
+9	504\\
+21	1008\\
+45	2016\\
+93	4032\\
+189	8064\\
+381	16128\\
+765	32256\\
+1533	64512\\
+3069	129024\\
+};
+\addplot [color=black, dashed, mark=diamond, mark options={solid, black}]
+  table[row sep=crcr]{%
+3	108\\
+9	180\\
+21	324\\
+45	612\\
+93	1188\\
+189	2340\\
+381	4644\\
+765	9252\\
+1533	18468\\
+3069	36900\\
+};
+\addplot [color=green, dashed, mark=square, mark options={solid, green}]
+  table[row sep=crcr]{%
+3	60\\
+9	72\\
+21	108\\
+45	180\\
+93	324\\
+189	612\\
+381	1188\\
+765	2340\\
+1533	4644\\
+3069	9252\\
+};
+\legend{Boehm, Bs2bs, Oslo, Parallel Oslo}
+\end{axis}%
+\end{tikzpicture}%

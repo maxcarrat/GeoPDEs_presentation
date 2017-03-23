@@ -1,0 +1,49 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=4.602in,
+height=3.583in,
+at={(0.772in,0.484in)},
+scale only axis,
+xmode=log,
+xmin=10,
+xmax=100000,
+xminorticks=true,
+ymode=log,
+ymin=1e-06,
+ymax=0.1,
+yminorticks=true,
+axis background/.style={fill=white},
+title style={font=\bfseries},
+title={H1 Error}
+]
+\addplot [color=blue,solid,mark=o,mark options={solid},forget plot]
+  table[row sep=crcr]{%
+32	0.0329896347869476\\
+72	0.0181134516464977\\
+200	0.00822187190598733\\
+648	0.0028180981192363\\
+2312	0.000782384315135081\\
+8712	0.000197975993275503\\
+27820	4.92997582943754e-05\\
+93912	1.2297227279916e-05\\
+};
+\addplot [color=black,dashed,forget plot]
+  table[row sep=crcr]{%
+32	0.0730740791015823\\
+72	0.0292278658603023\\
+200	0.00921337888924709\\
+648	0.00244063631978693\\
+2312	0.000579797821006377\\
+8712	0.00012949399727181\\
+27820	3.48705883067479e-05\\
+93912	8.8187695772441e-06\\
+};
+\end{axis}
+\end{tikzpicture}%
